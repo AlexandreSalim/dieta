@@ -1,0 +1,65 @@
+<div class="tela">
+    <ion-button (click)="mostrarDieta()" style="position: absolute; bottom: 100px;">vai</ion-button>
+
+    <section class="plano-alimentar-container">
+
+      <!-- Cartão principal -->
+      <ion-card class="plano-alimentar-card">
+        <ion-card-content>
+          <!-- Título em laranja -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div *ngFor="let grupo of dieta.cardapio; let i = index" class="swiper-slide">
+                <ion-button class="opcao">Opção {{ i + 1 }}</ion-button>
+          
+                <div class="refeicoes">
+                  <div class="refeicao" *ngFor="let refeicao of grupo">
+                    <ion-checkbox></ion-checkbox>
+                    <div>
+                      <h3 style="color: black;font-weight: bold;font-size: 16px;">{{ refeicao.titulo }}</h3>
+                        <p *ngFor="let item of refeicao.itens">
+                          {{ item }}
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  
+          <!-- Chips de macronutrientes -->
+          <div class="chips">
+            <ion-chip >
+              {{ dieta.proteinas | number:'1.0-0' }}g Proteínas
+            </ion-chip>
+            <ion-chip>
+              {{ dieta.carboidratos | number:'1.0-0' }}g Carboidratos
+            </ion-chip>
+            <ion-chip >
+              {{ dieta.gorduras | number:'1.0-0' }}g Gorduras
+            </ion-chip>
+          </div>
+        </ion-card-content>
+      </ion-card>
+  
+
+
+      <ion-card style="display: none;">
+        <ion-card-header>
+          Treinos {{ dieta.nivelTreino | titlecase }}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let treino of treinos; let i = index">
+              <ion-button>
+                Dia {{ i + 1 }}: {{ treino.descricao }}
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        <ion-button expand="block" (click)="voltar()">Voltar</ion-button>
+      </ion-card>
+    </section>
+
+  </div>

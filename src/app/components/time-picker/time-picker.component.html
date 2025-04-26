@@ -1,0 +1,71 @@
+    <div>
+    <!-- Hora -->
+    <div class="chooseTime">
+        <div #hourPicker class="picker-column" (scroll)="onHourScroll()">
+            <h2
+            *ngFor="let h of hoursList; let i = index"
+            [class.selected]="i === selectedHourIndex"
+            >
+            {{ h }}
+            </h2>
+        </div>
+        <!-- Minuto -->
+        <div #minPicker class="picker-column" (scroll)="onMinuteScroll()">
+            <h2
+            *ngFor="let m of minutesList; let j = index"
+            [class.selected]="j === selectedMinuteIndex"
+            >
+            {{ m }}
+            </h2>
+        </div>
+    </div>
+
+    <ion-button expand="block" (click)="confirmTime()">
+        Confirmar {{ hoursList[selectedHourIndex] }}:
+        {{ minutesList[selectedMinuteIndex] }}
+    </ion-button>
+    </div>
+
+
+    <ng-template #modalDay>
+        <main class="myModalTime">
+      <div class="header">
+        <h2>Repetir</h2>
+      </div>
+
+        <div class="days">
+          <div class="fourDays">
+            <span
+              class="more"
+              *ngFor="let d of firstRowDays"
+              (click)="toggleDay(d.idx)"
+              [class.selectd]="selectedDayIndices.includes(d.idx)"
+            >
+              {{ d.label }}
+            </span>
+          </div>
+          <div class="threeDays">
+            <span
+              class="more"
+              *ngFor="let d of secondRowDays"
+              (click)="toggleDay(d.idx)"
+              [class.selectd]="selectedDayIndices.includes(d.idx)"
+            >
+              {{ d.label }}
+            </span>
+          </div>
+        </div>
+        <ion-button expand="block" (click)="confirm()">
+            Confirmar {{ hoursList[selectedHourIndex] }}:
+            {{ minutesList[selectedMinuteIndex] }}
+        </ion-button>
+        </main>
+    </ng-template>
+      
+    <app-generic-modal
+        [isOpen]="modal"
+        [width]="'100%'"               
+        [height]="'100%'"              
+        [content]="modalDay"
+        (didDismiss)="modal = false"
+    ></app-generic-modal>  

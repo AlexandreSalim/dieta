@@ -1,0 +1,77 @@
+<ion-content [fullscreen]="true" aria-hidden="false">
+  <main class="body">
+    <h1>Cadastre-se</h1>
+    <form [formGroup]="formulario">
+      <div class="form-field">
+        <!-- Campo Nome -->
+
+        <div *ngIf="formulario.get('name')?.touched && formulario.get('name')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('name')?.errors?.['required']">Nome é obrigatório</ion-note>
+          <ion-note *ngIf="formulario.get('name')?.errors?.['minlength']">Mínimo 3 caracteres</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Nome:" id="Nome" type="text" 
+        class="input-field" formControlName="name"></ion-input>
+
+        <!-- Campo Email -->
+        <div *ngIf="formulario.get('email')?.touched && formulario.get('email')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('email')?.errors?.['required']">Email é obrigatório</ion-note>
+          <ion-note *ngIf="formulario.get('email')?.errors?.['email']">Email inválido</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Email:" id="Email" type="email" 
+          class="input-field" formControlName="email"></ion-input>
+
+        <!-- Campo Senha -->
+        <div *ngIf="formulario.get('password')?.touched && formulario.get('password')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('password')?.errors?.['required']">Senha é obrigatória</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Senha:" id="Senha" type="password" 
+          class="input-field" formControlName="password"></ion-input>
+
+        <!-- Campo Confirmar Senha -->
+        <div *ngIf="formulario.get('confirmpassword')?.touched && formulario.get('confirmpassword')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('confirmpassword')?.errors?.['required']">Confirme a senha</ion-note>
+        </div>
+        <!-- Erro de senhas não coincidentes -->
+        <div *ngIf="formulario.errors?.['passwordMismatch'] && 
+                   (formulario.get('confirmpassword')?.touched)" 
+             class="error-message">
+          <ion-note>As senhas não coincidem</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Confirmar senha:" id="Confirmar-senha" type="password" 
+          class="input-field" formControlName="confirmpassword"></ion-input>
+
+                <!-- Erro de senhas não coincidentes -->
+         <div *ngIf="formulario.get('celular')?.touched && formulario.get('celular')?.errors" class="error-message">
+          <ion-note>Celular invalido</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Celular:" id="Celular" type="text" 
+          class="input-field" formControlName="celular"></ion-input>
+
+        <div class="termos">
+          <label class="custom-checkbox">
+            <input name="dummy" type="checkbox">
+            <span class="checkmark"></span>
+          </label> 
+          <p>Aceitar os termos de condições</p>
+        </div>
+      </div>
+
+      <div class="cadastroOuLogin">
+        <ion-button (click)="enviarDados()">Cadastre-se</ion-button>
+        <p>já tem uma conta? <span (click)="login()">Faça login</span></p>
+      </div>
+
+      <div class="separador">
+        <div class="linha"></div>
+        <p>ou</p>
+        <div class="linha"></div>
+      </div>
+
+      <button class="button">
+        <ion-icon name="logo-chrome"></ion-icon>        
+        Continuar com o google
+      </button>
+
+    </form>
+  </main>
+</ion-content>

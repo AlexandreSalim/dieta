@@ -1,27 +1,281 @@
-#container {
-  text-align: center;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 25px 0;
+  font-family: "Montserrat", sans-serif;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  h1 {
+    margin: 0;
+  }
+  
+  ion-buttons {
+    position: absolute;
+    left: 30px;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 90px;
+
+  h1 {
+    margin: 20px 0 0 0;
+    width: 80%;
+    text-align: start;
+    font-weight: bold;
+  }
+
+  .box {
+    min-height: 200px;
+    width: 90%;
+    border-radius: 25px;
+    background-color: #fff;
+    position: relative;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 10px 10px 10px #d5c9c9;
+    
+    .boxOne {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      a {
+        font-style: italic;
+
+        color: #39b4b1;
+      }
+      ion-icon {
+        font-size: 40px;
+      }
+    }
+
+    h3 {
+      width: 100%;
+      text-align: start; 
+      margin-bottom: 20px;
+      font-style: italic;
+      font-weight: 500;
+      span {
+        color: #39b4b1;
+        font-weight: 500;
+      }
+    }
+
+    .days {
+      display: flex;
+      gap: 8px;
+
+      .day {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+
+        .number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 30px;
+        background-color: #838383;
+        }
+      }
+    }
+
+    .mlProgress {
+      border-bottom: solid 1px black;
+      padding-bottom: 15px;
+
+      ion-progress-bar {
+        --progress-background: #39b4b1; 
+        --background: #b3b3b3;
+        border-radius: 30px;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+
+      .ml {
+        display: flex;
+        gap: 20px;
+        justify-content: space-evenly;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 25px;
+          font-size: x-small;
+          padding: 5px;
+          font-weight: bolder;
+          background-color: #b3b3b3;
+          border-radius: 6px;
+        }
+      }
+    }
+
+    .mlDays {
+      max-height: 150px;
+      overflow-x: hidden;
+      padding: 0 10px;
+
+      .mlDrunk {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        .close {
+          position: absolute;
+          right: 0;
+          background-color: black;
+          color: #d5c9c9;
+          border-radius: 10px;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .mlDays::-webkit-scrollbar {
+      width: 10px; /* Define a largura da barra de rolagem */
+    }
+    
+    .mlDays::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Define a cor do fundo da barra de rolagem */
+    }
+    
+    .mlDays::-webkit-scrollbar-thumb {
+      background: #39b4b1; /* Define a cor da barra de rolagem */
+      border-radius: 5px; /* Define o raio das bordas da barra de rolagem */
+    }
+    
+
+
+    .metaBatida {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: transparent;
+      animation: 5s linear metaBatida;
+    }
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+ion-footer {
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  position: fixed;
+  bottom: 0;
+  height: 77px;
 
-  color: #8c8c8c;
+  ion-toolbar {
+    border-radius: 20px 20px 0 0;
+    height: 77px;
+  }
 
-  margin: 0;
+  .footerIcons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 45px;
+
+    ion-img {
+      width: 35px;
+    }
+  }
+
 }
 
-#container a {
-  text-decoration: none;
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
+
+@keyframes metaBatida {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(300px);
+  }
+}
+
+  //////////////////checkbox/////////////////
+  /* From Uiverse.io by KhaledMatalkah */ 
+  .custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .custom-checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom-checkbox .checkmark {
+    width: 34px;
+    height: 34px;
+    border: 2px solid #39b4b1;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+    transform-style: preserve-3d;
+  }
+  
+  .custom-checkbox .checkmark::before {
+    content: "\2713";
+    font-size: 16px;
+    color: transparent;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: #39b4b1;
+    border-color: #39b4b1;
+    transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
+  }
+  
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark::before {
+    color: #fff;
+  }
+  
+  .custom-checkbox:hover {
+    color: #39b4b1;
+  }
+  
+  .custom-checkbox:hover .checkmark {
+    border-color: #39b4b1;
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  .custom-checkbox input[type="checkbox"]:focus + .checkmark {
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+  
+  .custom-checkbox .checkmark,
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    transition: background-color 1.3s, border-color 1.3s, color 1.3s, transform 0.3s;
+  }
+  

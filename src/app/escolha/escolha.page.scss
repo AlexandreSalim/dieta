@@ -1,0 +1,44 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    background-color: white;
+    font-family: "Montserrat", sans-serif !important;
+
+    &__interno {
+        height: 400px;
+        width: 450px;
+        padding: 10px;
+        flex-direction: row;
+        
+        img {
+            height: 202px;
+            width: 162px;
+            filter: saturate(0%);
+
+            &.selected {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 8px rgb(0, 0, 0));
+                transition: 0.5s;
+              }
+        }
+    }
+
+    ion-button {
+        color: white;
+        --background: black;
+        --border-radius: 20px;
+        height: 40px;
+        width: 250px;
+        text-transform: none;
+        font-weight: bold;
+        font-size: large;
+        font-family: "Montserrat", sans-serif !important;
+    }
+
+}

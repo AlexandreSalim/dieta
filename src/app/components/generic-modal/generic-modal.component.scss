@@ -1,0 +1,15 @@
+.modal-content-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    /* centraliza vertical/horizontal */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    /* se quiser, limite max-width/heigh */
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: auto;
+  }
+  

@@ -1,0 +1,41 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+    <app-progress-h1 [progress]="progress" [h1]="'Seu perfil corporal'" style="width: 352px;height: 103px;"></app-progress-h1>
+
+    <section class="boxImc">
+      <h2>Seu IMC</h2>
+      <ion-icon name="information-circle-outline" (click)="presentPopover($event)"></ion-icon>      
+      <div class="resultsImc">
+        <h3>{{ imc }}</h3>
+        <div class="coresSpan">
+          <span #span1></span>
+          <span #span2></span>
+          <span #span3></span>
+          <span #span4></span>
+        </div>
+        <p>Situação: {{ situacao }}</p>
+      </div>
+    </section>
+    
+    <section class="meta">
+      <div>
+        <h2>Você está</h2>
+        <p>{{ mensagemSituacao }}</p>
+      </div>
+      <div>
+        <h2>Peso ideal</h2>
+        <p>{{ pesoIdealMin }} kg – {{ pesoIdealMax }} kg</p>
+      </div>
+    </section>
+
+    <section class="boxImc boxEnd">
+      <h2>{{ mensagemSituacao }}</h2>
+      <p>{{ text }}</p>
+    </section>
+
+    <ion-button [disabled]="isLoading" (click)="home()">
+      <ion-spinner *ngIf="isLoading"></ion-spinner>
+      {{ isLoading ? 'Enviando...' : 'Finalizar' }}
+    </ion-button>
+  </div>
+</ion-content>

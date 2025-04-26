@@ -1,0 +1,67 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    background-color: white;
+    text-align: center;
+    font-family: "Montserrat", sans-serif !important;
+
+    &__internal {
+        height: 400px;
+        width: 350px;
+        padding: 10px;
+
+        .selected {
+            transform: scale(1.07);
+            transition: 0.5s;
+          }
+
+        .rectangular-box {
+            width: 100%;
+            height: 100px;
+            box-shadow: -1px -1px 10px -5px black;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+
+            ion-img {
+                width: 30%;
+                height: 83px;
+            }
+
+            .ion-input {
+                width: 60%;
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+                position: relative;
+
+                ion-label {
+                    font-size: 26px;
+                    color: black;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
+    ion-button {
+        color: white;
+        --background: black;
+        --border-radius: 20px;
+        height: 40px;
+        width: 250px;
+        text-transform: none;
+        font-weight: bold;
+        font-size: large;
+        font-family: "Montserrat", sans-serif !important;
+    }
+
+}

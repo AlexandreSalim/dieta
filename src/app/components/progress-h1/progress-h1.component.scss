@@ -1,0 +1,22 @@
+.progress {
+    align-items: center;
+    gap: 40px;
+    width: 93%;
+    display: flex;
+    margin-top: 30px;
+
+    &_bar {
+        --progress-background: black; 
+        --background: rgb(164, 164, 164);
+        border-radius: 30px;
+    }
+}
+
+
+h1 {
+    font-weight: bolder;
+    color: black;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}

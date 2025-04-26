@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true" aria-hidden="false">
+  <main class="body">
+    <h1>Login</h1>
+    <form [formGroup]="formulario">
+      <div class="form-field">
+
+        <!-- Campo Email -->
+        <div *ngIf="formulario.get('email')?.touched && formulario.get('email')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('email')?.errors?.['required']">Email é obrigatório</ion-note>
+          <ion-note *ngIf="formulario.get('email')?.errors?.['email']">Email inválido</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Email:" id="Email" type="email" 
+          class="input-field" formControlName="email"></ion-input>
+
+        <!-- Campo Senha -->
+        <div *ngIf="formulario.get('password')?.touched && formulario.get('password')?.errors" class="error-message">
+          <ion-note *ngIf="formulario.get('password')?.errors?.['required']">Senha é obrigatória</ion-note>
+        </div>
+        <ion-input fill="outline" placeholder="Senha:" id="Senha" type="password" 
+          class="input-field" formControlName="password"></ion-input>
+      </div>
+
+      <div class="cadastroOuLogin">
+        <ion-button (click)="onLogin()">Logar</ion-button>
+        <p>Não tem uma conta? <span (click)="cadastrar()">Cadastre-se</span></p>
+      </div>
+
+      <div class="separador">
+        <div class="linha"></div>
+        <p>ou</p>
+        <div class="linha"></div>
+      </div>
+
+      <button class="button">
+        <ion-icon name="logo-chrome"></ion-icon>
+        Continuar com o google
+      </button>
+
+    </form>
+  </main>
+</ion-content>

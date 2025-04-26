@@ -1,0 +1,84 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    background-color: white;
+
+    &__internal {
+        height: 400px;
+        width: 350px;
+        padding: 10px;
+
+        .rectangular-box {
+            width: 100%;
+            height: 140px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #f2f2f2;
+            .img {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width: 60%;
+                }
+            }
+
+            .ion-input {
+                width: 50%;
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+                position: relative;
+
+                ion-label {
+                    font-size: 25px;
+                    color: black;
+                    font-weight: bold;
+                }
+
+                input {
+                    font-size: 40px;
+                    color: black;
+                    font-weight: bold;
+                    background-color: transparent;
+                    border: none;
+                    width: 78px;
+                }
+
+                input:focus-visible {
+                    border: none;
+                   outline: none;
+                }
+
+                h1 {
+                    font-size: 25px;
+                    color: #535353c2;
+                    margin: 0;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    ion-button {
+        color: white;
+        --background: black;
+        --border-radius: 20px;
+        height: 40px;
+        width: 250px;
+        text-transform: none;
+        font-weight: bold;
+        font-size: large;
+        font-family: "Montserrat", sans-serif !important;
+    }
+
+}

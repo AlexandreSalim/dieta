@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+    <app-progress-h1 [progress]="progress" [h1]="'Qual a sua idade?'" style="width: 352px;"></app-progress-h1>
+
+      <div class="box box__internal">
+        <div class="rectangular-box">
+          <div class="img">
+            <img src="../../assets/img/icon_idade_bolo.svg"/>
+          </div>
+          <div class="ion-input">
+            <ion-label>sua idade</ion-label>
+            <div style="display: flex;align-items: center;">
+              <input 
+            #idadeTemplate 
+            [(ngModel)]="idade" 
+            id="idade" 
+            type="number"
+            mask="00"
+            placeholder="00"
+            (keyup.enter)="proximo()" 
+            >
+            <h1>anos</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-button (click)="proximo()">Continuar</ion-button>
+  </div>
+</ion-content>

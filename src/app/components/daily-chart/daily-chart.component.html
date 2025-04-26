@@ -1,0 +1,30 @@
+<div class="chart-wrapper">
+  <h1>{{ title }}</h1>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [plotOptions]="chartOptions.plotOptions"
+    [dataLabels]="chartOptions.dataLabels"
+    [xaxis]="chartOptions.xaxis"
+    [tooltip]="chartOptions.tooltip"
+    [fill]="chartOptions.fill"
+    [title]="chartOptions.title"
+    [subtitle]="chartOptions.subtitle"
+  ></apx-chart>
+
+  <!-- row custom de rótulos coloridos -->
+  <div class="labels-row">
+    <div
+      *ngFor="let day of days; let i = index"
+      class="label-box"
+      [class.highlight]="i === highlightIndex"
+    >
+      <p>{{ day }}</p>
+    </div>
+  </div>
+  <div class="labels-row" style="bottom: 6px;">
+    <div *ngFor="let semanas of sem" class="label-box label-sem">
+      <p>{{ semanas }}</p>
+    </div>
+  </div>
+</div>

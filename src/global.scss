@@ -35,3 +35,206 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Importando a fonte Montserrat do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+body {
+    font-family: "Montserrat", sans-serif !important;
+}
+
+ion-modal {
+    --background: #ffffffb0;
+}
+
+.ion-page {
+    justify-content: center;
+}
+
+ion-modal.modal-default.show-modal~ion-modal.modal-default {
+    --backdrop-opacity: 0.7;
+    --box-shadow: none;
+
+}
+
+.modal-content-wrapper {
+    background-color: transparent !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    justify-content: end !important;
+    padding: 0px !important;
+}
+
+.ngTemplateHome {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;   
+    background-color: white; 
+    padding: 50px 10px 10px 10px;
+    border-radius: 10px;
+    height: 100%;
+    margin: 20px !important;
+    position: relative;
+    overflow-y: scroll;
+
+    & .ion-icon {
+        color: black;
+        font-size: 40px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+    & .titleLembrete {
+        top: -7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+
+        h2 {
+            font-weight: bold;
+        }
+    }
+    
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        color: black;
+
+        h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+
+    .box-generec-component {
+        height: 193px;
+        width: 98%;
+        border-radius: 25px;
+        background-color: #e6e6e6;
+        position: relative;
+        color: black;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 10px 10px 10px #d5c9c9;
+        text-align: start;
+
+        & .time {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h2 {
+                margin: 0;
+                font-weight: bold;
+                color: #3ec9c8;
+            }
+           
+        }
+
+        .days {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .day {
+                display: flex;
+                gap: 5px;
+                color: #3ec9c8;
+                font-size: small;
+            }
+
+            ion-icon {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .more {
+        font-size: 35px;
+        color: white;
+        background-color: #3ec9c9;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        position: fixed;
+        bottom: 65px;
+        z-index: 1;
+    }
+}
+
+  .ngTemplateHome::-webkit-scrollbar {
+    width: 10px; /* Define a largura da barra de rolagem */
+  }
+  
+  .ngTemplateHome::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Define a cor do fundo da barra de rolagem */
+  }
+  
+  .ngTemplateHome::-webkit-scrollbar-thumb {
+    background: #39b4b1; /* Define a cor da barra de rolagem */
+    border-radius: 5px; /* Define o raio das bordas da barra de rolagem */
+  }
+
+.myModalTime {
+    background-color: white;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 60px 60px 0 0;
+    padding: 20px 20px 0 20px;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        color: black;
+
+        h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #c71f1f; /* Cor das setas */
+}
+:host {
+    display: block;
+  }
+  
+  .swiper {
+    width: 100%;
+    height: 300px; /* Ajuste conforme necessário */
+  }
+  
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: #cd2c2c;
+    color: black
+  }
+  
+
+  ion-toggle {
+    --handle-background-checked: #ffffff;
+    --track-background-checked: #3ec9c8;
+    --track-background: white;
+    --handle-background: #3ec9c8;
+    --handle-width: 14px;
+    --handle-height: 14px;
+}
+
+

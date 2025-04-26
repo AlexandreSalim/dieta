@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+    <app-progress-h1 [progress]="progress" [h1]="'Quantas vezes por semana você se exercita?'" style="width: 352px;"></app-progress-h1>
+
+      <div class="box box__internal">
+        <div class="rectangular-box">
+          <swiper-container 
+            #mySwiper 
+            class="mySwiper" 
+            space-between="30" 
+            centered-slides="true"
+            pagination="true"
+            (swiperslidechange)="onSlideChange($event)">
+            <swiper-slide *ngFor="let day of daysOfWeek; let i = index">
+                <ion-img [src]="day"></ion-img>
+                <div>
+                  <h2>{{ exercises[i] }}</h2>
+                  <h2>{{ explainingExercises[i] }}</h2>
+                </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </div>
+
+      <ion-button (click)="objetivo()" [disabled]="!exercisesChosen">Continuar</ion-button>
+  </div>
+</ion-content>

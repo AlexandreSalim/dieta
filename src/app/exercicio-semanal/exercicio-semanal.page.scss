@@ -1,0 +1,86 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    background-color: white;
+    font-family: "Montserrat", sans-serif !important;
+
+    &__internal {
+        height: 330px;
+        width: 350px;
+        padding: 10px;
+
+        .rectangular-box {
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Montserrat", sans-serif !important;
+
+            ion-img {
+                width: 92%;
+                height: 172px;
+                box-shadow: -1px -1px 10px -5px black;
+                border-radius: 15px;
+            }
+        }
+    }
+
+    ion-button {
+        color: white;
+        --background: black;
+        --border-radius: 20px;
+        height: 40px;
+        width: 250px;
+        text-transform: none;
+        font-weight: bold;
+        font-size: large;
+        font-family: "Montserrat", sans-serif !important;
+    }
+
+}
+
+// Adicione estas regras no final do arquivo
+swiper-container.mySwiper {
+    width: 100%;
+    height: 100%;
+}
+  
+  swiper-slide {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    transition: transform 0.3s ease;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+        h2 {
+            font-weight: bold;
+            margin: 0;
+            font-size: 20px;
+            &:nth-child(2) {
+                font-size: 14px;
+                width: 87%;
+                margin-top: 10px;
+                margin-bottom: 30px;
+            }
+        }
+
+    }
+
+  }

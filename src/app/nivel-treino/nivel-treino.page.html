@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+    <app-progress-h1 [progress]="progress" [h1]="'Qual seu nível de treino?'" style="width: 352px;"></app-progress-h1>
+
+      <div class="box box__internal">
+        <div class="rectangular-box">
+          <swiper-container 
+            #mySwiper 
+            class="mySwiper" 
+            space-between="30" 
+            centered-slides="true"
+            (swiperslidechange)="onSlideChange($event)">
+            <swiper-slide *ngFor="let day of daysOfWeek; let i = index">
+                <ion-img [src]="day" [ngClass]="'img' + i"></ion-img>
+                <div>
+                  <h2>{{ exercises[i] }}</h2>
+                  <h2>{{ explainingExercises[i] }}</h2>
+                </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </div>
+      <div class="nivel">
+        <div #start class="dot dot-start" (click)="goToSlide(0)"></div>
+        <div #middle class="dot dot-middle" (click)="goToSlide(1)"></div>
+        <div #end class="dot dot-end" (click)="goToSlide(2)"></div>
+        <ion-progress-bar [value]="progress_treino" class="progress_bar"></ion-progress-bar>
+      </div>
+      
+      <ion-button (click)="objetivo()" [disabled]="!exercisesChosen">Continuar</ion-button>
+  </div>
+</ion-content>

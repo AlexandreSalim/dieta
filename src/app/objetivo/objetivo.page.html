@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+      <app-progress-h1 [progress]="progress" [h1]="'Qual é o seu objetivo?'" style="width: 352px;"></app-progress-h1>
+      
+      <div class="box box__internal">
+        <div class="rectangular-box"        
+             [ngClass]="{ 'selected': threeSelection === 'emagrecer' }"
+             (click)="selectThree('emagrecer')">
+          <ion-img src="../../assets/img/escala.gif"></ion-img>
+          <div class="ion-input">
+            <ion-label>Emagrecer</ion-label>
+          </div>
+        </div>
+
+        <div class="rectangular-box"        
+             [ngClass]="{ 'selected': threeSelection === 'manter' }"
+             (click)="selectThree('manter')">
+             <ion-img src="../../assets/img/exercicio.gif"></ion-img>
+             <div class="ion-input">
+            <ion-label>Manter o peso</ion-label>
+          </div>
+        </div>
+
+        
+        <div 
+        class="rectangular-box" 
+        [ngClass]="{ 'selected': threeSelection === 'ganhar' }"
+        (click)="selectThree('ganhar')">
+        <ion-img src="../../assets/img/crescimento-muscular.gif"></ion-img>
+        <div class="ion-input">
+            <ion-label>Ganhar peso</ion-label>
+          </div>
+        </div>
+      </div>
+
+      <ion-button (click)="idade()">Continuar</ion-button>
+  </div>
+</ion-content>

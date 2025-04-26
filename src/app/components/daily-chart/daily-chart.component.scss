@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+.chart-wrapper {
+  position: relative;
+  padding: 20px 0 50px 0; /* espaço para as labels */
+  border-radius: 30px;
+  background-color: white;
+  margin-bottom: 40px;
+  
+  h1 {
+    font-weight: bold;
+    margin: 0 10px;
+
+  }
+}
+
+.labels-row {
+  position: absolute;
+  bottom: 40px;
+  left: 35px;
+  gap: 3.4px;
+  right: 0;
+  display: flex
+;
+}
+
+.label-sem {
+  background-color: transparent !important;
+  font-size: x-small !important;
+}
+
+.label-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40.1px;
+  background-color: #e6e6e6;
+  padding: 4px 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-weight: bold;
+  color: #000;
+  p {
+    margin: 0;
+  }
+  &:nth-child(2) {
+    margin: 0 0 0 0.4px;
+  }
+  &:nth-child(3) {
+    margin: 0 0 0 0.4px;
+  }
+  &:nth-child(4) {
+    margin: 0 0 0 0.4px;
+  }
+  &:nth-child(5) {
+    margin: 0 0 0 0.4px;
+  }
+  &:nth-child(6) {
+    margin: 0 0 0 0.4px;
+  }
+
+}
+
+/* opcional: destaque para o highlightedIndex */
+.label-box.highlight {
+  color: #3ec9c9;
+}

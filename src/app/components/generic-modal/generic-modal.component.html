@@ -1,0 +1,15 @@
+<ion-modal
+  [isOpen]="isOpen"
+  (didDismiss)="didDismiss.emit()"
+  backdrop-dismiss="true"
+>
+  <ng-template>
+    <div
+      class="modal-content-wrapper"
+      [ngStyle]="{ width: width, height: height }"
+    >
+      <!-- aqui renderiza o conteúdo passado pela página chamadora -->
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+  </ng-template>
+</ion-modal>

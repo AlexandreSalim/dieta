@@ -1,20 +1,260 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content color="ligth">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+
+
+  <header>
+    <div class="ion-page" id="main-content">
+        <div style="--background: white;color: black;display: flex;justify-content: center;align-items: center;">
+          <ion-buttons slot="start">
+            <ion-menu-button style="font-size: 50px;"></ion-menu-button>
+          </ion-buttons>
+          <div style="background-color: black;width: 130px;height: 30px;"></div>
+        </div>
+    </div>
+  </header>
+  
+  <main *ngIf="home">
+    
+    <h1>Olá, Maria!</h1>
+
+    <section class="box" style="display: none;">
+      <div class="boxOne">
+        <h2>Meu pano alimentar</h2>
+        <ion-icon name="pause-circle-outline"></ion-icon>      
+      </div>
+
+      <div class="boxOne">
+        <p>Meta da semana</p>
+        <p>2/5 <a href="#">Editar</a></p>
+      </div>
+
+      <div class="days">
+        <div class="day">
+          <span>dom</span>
+          <span class="number">1</span>
+        </div>
+
+        <div class="day">
+          <span>dom</span>
+          <span class="number">2</span>
+        </div>
+
+        <div class="day">
+          <span>dom</span>
+          <span class="number">3</span>
+        </div>
+
+        <div class="day">
+          <span>dom</span>
+          <span class="number">4</span>
+        </div>
+
+        <div class="day">
+          <span>dom</span>
+          <span class="number">5</span>
+        </div>
+
+        <div class="day"> 
+          <span>dom</span>
+          <span class="number">6</span>
+        </div>
+
+        <div class="day">
+          <span>dom</span>
+          <span class="number">7</span>
+        </div>
+      </div>
+    </section>
+    <!-- dieta -->
+    <section class="box">
+      <div class="boxOne">
+        <h2>Dieta</h2>
+        <a>Ativar lembrete</a>     
+      </div>
+      <div style="text-align: start;font-family: 'Montserrat', sans-serif">
+        <h2 style="color: #39b4b1;font-weight: bold;font-size: 20px;">06:00 - Café da manhã</h2>
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+          <p style="width: 80%;font-size: 15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et cum illum autem laudantium rerum, modi voluptatum error</p>
+          <label class="custom-checkbox">
+            <input name="dummy" type="checkbox">
+            <span class="checkmark"></span>
+          </label> 
+        </div>
+      </div>
+    </section>
+    <!-- hidrico -->
+    <section class="box" style="display: none;">
+
+      <div class="boxOne">
+        <h2>Balanço Híbrico</h2>
+        <a (click)="abrirModal()">Ativar lembrete</a>     
+      </div>
+      <h3>{{ getTotalMl() }}/{{ metaMl }} <span>ml</span></h3>
+
+      <div class="mlProgress">
+        <ion-progress-bar [value]="progress"></ion-progress-bar>
+        <div class="ml">
+          <span 
+          *ngFor="let ml of mlDays"
+          (click)="mlDaysCheck(ml)"
+          > {{ ml }} ml</span>
+        </div>
+      </div>
+
+      <div class="mlDays">
+        <div class="mlDrunk" *ngFor="let hora_ml of mlDaysChecked; let i = index">
+          <p>{{ hora_ml.time | date:'HH:mm' }}</p>
+          <div class="mlDrunk" style="gap:3px;font-weight: bold;">
+            <ion-icon name="beer-outline"></ion-icon>            
+            <p>{{ hora_ml.ml }} ml</p>
+          </div>
+          <ion-icon name="close" class="close" (click)="close(i)"></ion-icon>
+        </div>
+      </div>
+
+      <div #metaBatida class="metaBatida">
+        <h1>meta batida</h1>
+        <img src="../../assets/img/andar.gif">
+      </div>
+    </section>
+    <!-- solicitar uma nova dieta -->
+    <section class="box">
+      <div>solicitar uma nova dieta</div>
+    </section>
+  </main>  
+
+  <section style="margin-top: 24px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+    <app-daily-chart
+    style="max-width: 350px;width: 350px;"
+    *ngIf="daily"
+    [days]="['30','31','01','02','03','04','05']"
+    [values]="[8,5,6,6,3,3,4,]"
+    [highlightIndex]="3" 
+    [title]="'Refeições diárias'"
+  ></app-daily-chart>
+
+  <app-daily-chart
+  [title]="'Relatorio Semanal de Hidratação'"
+  style="max-width: 350px;width: 350px;margin-bottom: 90px;display: none;"
+  *ngIf="daily"
+  [days]="['30','31','01','02','03','04','05']"
+  [values]="[8,5,6,6,3,3,4,]"
+  [highlightIndex]="3" 
+></app-daily-chart>
+  </section>
+
+  <ng-template #meuModalBody>
+    <main class="ngTemplateHome">
+      <ion-icon class="ion-icon" name="close" (click)="fecharModal()"></ion-icon>
+      <div class="titleLembrete">
+        <h2 style="color: black;">Lembrete</h2>
+      </div>
+
+      <div *ngFor="let r of reminders; let i = index" class="box-generec-component">
+        <div class="header">
+        </div>
+
+        <div class="time">
+          <h2>{{ r.time }}</h2>
+          <ion-toggle></ion-toggle>
+        </div>
+        <p style="font-weight: bold;">Beba água!</p>
+        <p style="margin: 0;">Repetir</p>
+        <div class="days">
+          <div class="day">
+            <span 
+              *ngFor="let di of r.days"
+            >{{ allDays[di] }}</span>
+          </div>
+          <ion-icon name="trash-outline" (click)="removeReminder(i)"></ion-icon>
+        </div>
+      </div>
+      <ion-icon class="more" name="add-outline" (click)="abrirLembreteModal()"></ion-icon>
+    </main>
+  </ng-template>
+
+  <ng-template #myModalTime>
+    <main class="myModalTime">
+      <div class="header">
+        <h2>Repetir</h2>
+      </div>
+    
+      <app-time-picker
+      (timeConfirmed)="onTimeConfirmed($event)"
+      style="width: 80%;"
+    ></app-time-picker>
+    </main>
+</ng-template>
+
+
+
+  <app-generic-modal
+    [isOpen]="showModal"
+    [width]="'100%'"               
+    [height]="'100%'"              
+    [content]="meuModalBody"
+    (didDismiss)="showModal = false"
+  ></app-generic-modal>
+
+  <app-generic-modal
+    [isOpen]="showModalTime"
+    [width]="'100%'"               
+    [height]="'100%'"              
+    [content]="myModalTime"
+    (didDismiss)="showModalTime = false"
+  ></app-generic-modal>
+
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="ligth">
+        <section style="display: flex;align-items: center;justify-content: center;">
+          <div style="background-color: black;width: 130px;height: 30px;"></div>
+        </section>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="ligth" class="ion-padding">
+      <section class="menu" style="justify-content: space-between;">
+        <div class="menu">
+          <ion-icon name="moon-outline"></ion-icon>
+          <p>Modo escuro</p>
+        </div>
+        <ion-toggle></ion-toggle>
+      </section>
+
+      <section class="menu">
+        <ion-icon name="star-outline"></ion-icon>
+        <p>Nos avalie</p>
+      </section>
+
+      <section class="menu">
+        <ion-icon name="share-social-outline"></ion-icon>
+        <p>Compartilhe com amigos</p>
+      </section>
+
+      <section class="menu">
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <p>Faq(Perguntas Frequentes)</p>
+      </section>
+
+      <section class="menu">
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        <p>Fale Conosco</p>
+      </section>
+    </ion-content>
+  </ion-menu>
+
+  <app-dieta *ngIf="dieta"></app-dieta>
+  <app-perfil *ngIf="perfil"></app-perfil>
+   
+  <ion-footer>
+    <ion-toolbar color="ligth">
+     <section class="footerIcons">
+      <ion-img src="assets/img/botão_home_casinha.svg" (click)="callHome()"></ion-img>
+      <ion-img src="assets/img/botão_dieta_maçã.svg" (click)="callDiet()"></ion-img>
+      <ion-img src="assets/img/botão_relatorio.svg" (click)="callDaily()"></ion-img>
+      <ion-img src="assets/img/botão_person.svg" (click)="callPerfil()"></ion-img>
+     </section>
     </ion-toolbar>
-  </ion-header>
+  </ion-footer>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
 </ion-content>
