@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GenericModalComponent } from '../components/generic-modal/generic-modal.component';
+import { AuthenticationService } from '../service/authentication.service';
+import { Dieta } from '../interfaces/dieta.interface';
 
 interface DrinkEntry {
   ml: number;
@@ -32,6 +34,7 @@ export class HomePage {
 
   // array de lembretes: cada um com hora e dias
   reminders: Reminder[] = [];
+  grupoDieta: Dieta[] = [];
 
   // arrays auxiliares para renderizar dias abreviados
   allDays = ['dom','seg','ter','qua','qui','sex','sab'];
@@ -41,6 +44,17 @@ export class HomePage {
   mlDaysChecked: DrinkEntry[] = [];
 
   @ViewChild('metaBatida') metaBatida!: ElementRef<HTMLDivElement>;
+
+  constructor(private authenticationService: AuthenticationService) {
+     this.authenticationService.getDieta().subscribe({
+          next: (dieta: Dieta[]) => {
+            // atribui todo o array retornado
+            this.grupoDieta = dieta;
+            console.log('Dieta recebida:', this.grupoDieta);
+          },
+          error: err => {console.log(err)}
+        })
+  }
 
   mlDaysCheck(mlText: string) {
     const mlNum = parseInt(mlText, 10);

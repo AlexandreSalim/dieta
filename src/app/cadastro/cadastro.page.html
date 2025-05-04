@@ -44,8 +44,16 @@
          <div *ngIf="formulario.get('celular')?.touched && formulario.get('celular')?.errors" class="error-message">
           <ion-note>Celular invalido</ion-note>
         </div>
-        <ion-input fill="outline" placeholder="Celular:" id="Celular" type="text" 
-          class="input-field" formControlName="celular"></ion-input>
+
+          <input 
+          mask="(00) 0 0000 0000" 
+          fill="outline" 
+          placeholder="Celular:" 
+          id="Celular" 
+          type="text" 
+          class="input-field" 
+          formControlName="celular"
+          style="padding-left: 16px;">
 
         <div class="termos">
           <label class="custom-checkbox">
@@ -54,6 +62,10 @@
           </label> 
           <p>Aceitar os termos de condições</p>
         </div>
+      </div>
+
+      <div *ngIf="showError" class="error-message">
+        <ion-note>{{ errorMessage }}</ion-note>
       </div>
 
       <div class="cadastroOuLogin">

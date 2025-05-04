@@ -44,7 +44,12 @@ export class LoginPage implements OnInit {
        },
        error: (err: any) => {
          this.showError = true;
-         this.errorMessage = err?.error?.message || 'Falha no login. Verifique suas credenciais.';
+
+        if (err.status === 401) {
+          this.errorMessage = err?.error?.message || 'Credenciais invalidas.'
+        } else {
+          this.errorMessage = err?.error?.message || 'Falha no login. Verifique suas credenciais.';
+        }
          console.error('Erro de login:', err);
        }
      })

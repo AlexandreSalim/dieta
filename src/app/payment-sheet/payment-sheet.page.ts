@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { first, lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApplePayEventsEnum, GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum, Stripe } from '@capacitor-community/stripe';
 import { HttpClient } from '@angular/common/http';
+
+import { Router } from '@angular/router';
+import { UserStateService } from '../service/user-state.service';
+import { GenericModalComponent } from '../components/generic-modal/generic-modal.component';
+
 
 @Component({
   selector: 'app-payment-sheet',
@@ -13,6 +18,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PaymentSheetPage  {
 
+  showModal: boolean = true;
+  @ViewChild(GenericModalComponent)
+  private genericModal!: GenericModalComponent;
+
   data: any = {
     name: 'alexandre',
     email: 'ale@gmail.com',
@@ -20,14 +29,18 @@ export class PaymentSheetPage  {
     currency: 'brl'
   };
 
-   constructor(private http: HttpClient) {
+   constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userStateService: UserStateService
+   ) {
     Stripe.initialize({
       publishableKey: environment.stripe.publishableKey,
     });
   }
 
   httpPost(body: any){
-    return this.http.post<any>(environment.api + 'payment-sheet', body).pipe(first());
+    return this.http.post<any>('/payment-sheet', body).pipe(first());
   }
 
   async paymentShet() {
@@ -177,5 +190,11 @@ export class PaymentSheetPage  {
     const result = paymentIntent.split('_').slice(0, 2).join('_');
     console.log('paymentIntent');
     return result;
+  }
+
+  testederota() {
+    this.genericModal.close();
+    this.showModal = false;
+    this.router.navigate(['/escolher-dieta'])
   }
 }

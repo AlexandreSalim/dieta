@@ -20,6 +20,10 @@
           class="input-field" formControlName="password"></ion-input>
       </div>
 
+      <div *ngIf="showError" class="error-message" style="margin-top: 10px;">
+        <ion-note>{{ errorMessage }}</ion-note>
+      </div>
+
       <div class="cadastroOuLogin">
         <ion-button (click)="onLogin()">Logar</ion-button>
         <p>Não tem uma conta? <span (click)="cadastrar()">Cadastre-se</span></p>

@@ -60,6 +60,14 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'sugestao',
+    loadChildren: () => import('./sugestao/sugestao.module').then( m => m.SugestaoPageModule)
+  },
+  {
+    path: 'escolher-dieta',
+    loadChildren: () => import('./escolher-dieta/escolher-dieta.module').then( m => m.EscolherDietaPageModule)
+  },
 ];
 
 @NgModule({

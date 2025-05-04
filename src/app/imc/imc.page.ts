@@ -32,7 +32,7 @@ import { LoginRequest } from '../interfaces/login.interface';
 export class ImcPage implements OnInit {
 
   public buffer = 0.06;
-  public progress = 0.30;
+  public progress = 1;
 
   peso: string | undefined;
   altura: string | undefined;
@@ -43,7 +43,6 @@ export class ImcPage implements OnInit {
   mensagemSituacao = '';
   text = '';
   titleText = '';
-  isLoading = false;
   error = '';
 
   @ViewChild('span1') span1!: ElementRef<HTMLSpanElement>;
@@ -122,27 +121,24 @@ export class ImcPage implements OnInit {
     const data = this.userStateService.getCurrentData();
 
     const userPayload: CreateUserHealth = {
-      user_id: data.age!,
-      weight_kg: data.weight!,
-      height_cm: data.height!,
+      weight_kg: Number(data.weight),
+      height_cm: Number(data.height),
+      age: Number(data.age),
+      gender: data.gender!,
       goal: data.goal!,
-      age: data.age!,
-      gender: data.gender!
     };
-
-    this.isLoading = true;
+    console.log(userPayload)
 
     this.authenticationService.createUserHealth(userPayload).subscribe({
       next: () => {
         console.log('✔️ tudo enviado com sucesso, indo para home');
         this.userStateService.clearData();
-        this.router.navigate(['/home'])
+        this.router.navigate(['/payment-sheet'])
       },
 
       error: err => {
         console.error('🚫 erro final:', err);
         this.error = err?.error?.message || 'falha ao se cadastrar'
-        this.isLoading = false;
       }
     })
 

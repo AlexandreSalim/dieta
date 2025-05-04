@@ -1,14 +1,63 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      Stripe
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ng-template #meuModalBody>
+    <main>
+      <section class="body">
 
-<ion-content class="ion-padding">
-  <ion-button expand="block" class="ion-margin-top" (click)="paymentShet()">paymentShet</ion-button>
-  <ion-button expand="block" class="ion-margin-top" (click)="paymentFlow()">paymentFlow</ion-button>
-  <ion-button expand="block" class="ion-margin-top" (click)="applePay()">applePay</ion-button>
-  <ion-button expand="block" class="ion-margin-top" (click)="googlepay()">googlepay</ion-button>
-</ion-content>
+        <div>
+          <h1>Por que usar este app?</h1>
+        </div>
+        <div class="body_meio">
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>Desenvolvido por especialista em nutrição</p>
+          </div>
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>Planos atualizados mensalmente</p>
+          </div>
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>Cardápios saudáveis e práticos</p>
+          </div>
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>Ideal prara: emagrecer, manter ou ganhar peso</p>
+          </div>
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>Indicação de macronutrientes diários</p>
+          </div>
+          <div class="beneficios">
+            <ion-checkbox checked="true" disabled="true"></ion-checkbox>
+            <p>acesso rápido e fácil pelo celular</p>
+          </div>
+        </div>
+
+        <div class="body_plano">
+          <div class="title">
+            <h3>Desbloqueie seu plano personalizado</h3>
+          </div>
+          <div class="valor title">
+            <p>por apenas</p>
+            <h3>R$</h3>
+            <h1>30,00</h1>
+          </div>
+          <ion-button (click)="testederota()"><p>Assinar agora!</p></ion-button>
+        </div>
+      </section>
+    </main>
+</ng-template>
+    
+    
+  <app-generic-modal
+    [isOpen]="showModal"
+    [width]="'100%'"               
+    [height]="'100%'"              
+    [content]="meuModalBody"
+    (didDismiss)="showModal = false"
+  ></app-generic-modal>
+  
+  <!-- <div class="button">
+    <ion-button expand="block" class="ion-margin-top" (click)="googlepay()">googlepay</ion-button>
+    <ion-button expand="block" class="ion-margin-top" (click)="paymentShet()">paymentShet</ion-button>
+    <ion-button expand="block" class="ion-margin-top" (click)="applePay()">applePay</ion-button>
+  </div> -->

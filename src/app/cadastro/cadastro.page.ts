@@ -18,6 +18,7 @@ import { passwordMatchValidator } from '../../util/passwordMatchValidator ';
 import { UserStateService } from '../service/user-state.service';
 import { AuthenticationService } from '../service/authentication.service';
 import { CreateUserRequest } from '../interfaces/createUser.interface';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro',
@@ -31,8 +32,10 @@ import { CreateUserRequest } from '../interfaces/createUser.interface';
     IonInput,
     IonContent,
     CommonModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgxMaskDirective,
+  ],
+  providers: [provideNgxMask()]
 })
 export class CadastroPage implements OnInit {
   // 1) Usando nonNullable em cada controle:
@@ -61,6 +64,8 @@ export class CadastroPage implements OnInit {
     },
     { validators: passwordMatchValidator }
   );
+  showError = false;
+  errorMessage = '';
 
   constructor(
     private router: Router,
@@ -83,19 +88,23 @@ export class CadastroPage implements OnInit {
     const userData: CreateUserRequest = {
       full_name: formData.name,
       email: formData.email,
-      password: formData.password,
       phone: formData.celular,
-      age: 25, //temporario, vai sair daqui
-      gender: 'gender' //temporario, vai sair daqui
+      password: formData.password,
     };
   
     this.authenticationService.createUser(userData).subscribe({
       next: (response) => {
         console.log('Usuário criado com sucesso:', response);
+        localStorage.setItem('token', response.token)
         this.router.navigate(['/escolha']);
       },
       error: (error) => {
-        console.error('Erro ao criar usuário:', error);
+        this.showError = true;
+
+        if(error.status === 400) {
+          this.errorMessage = 'Este e-mail já está cadastrado.';
+          console.error(this.errorMessage);
+        } 
         // Adicione tratamento de erros aqui
       }
     });

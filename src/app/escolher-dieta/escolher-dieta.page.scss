@@ -1,0 +1,90 @@
+    ion-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: "Montserrat", sans-serif !important;
+
+      h1, p {
+        text-align: center;
+        color: #39b4b1; 
+        font-weight: bold;
+      }
+
+      div {
+        border-bottom: solid 1px rgb(98, 98, 98);
+        padding-bottom: 5px;
+        strong {
+          font-size: large;
+        }
+        p {
+          color: rgb(98, 98, 98);
+          font-size: medium;
+          text-align: start;
+        }
+        &:nth-child(8) {
+          border-bottom: none;
+        }
+      }
+
+  
+    }
+  /* Caso queira estilizar mais o botão de Voltar ou remover margin do ion-card,
+     você pode sobrescrever aqui. Exemplo: */
+  ion-button {
+    --border-radius: 30px;
+    --background: #35a59f;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    padding: 16px 0 0 0;
+    overflow: visible !important;
+  
+    .swiper-wrapper {
+      transition-timing-function: linear; /* Para movimento mais suave */
+    }
+  
+    .swiper-slide {
+      width: 332px;
+      height: 595px;
+      background: #ffffff;
+      border-radius: 15px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     align-items: normal !important;
+      box-sizing: border-box;
+      opacity: 0.7;
+      transform: scale(0.8);
+      color: black;
+  
+      pre {
+        white-space: pre-wrap;
+        text-align: left;
+        margin-top: 15px;
+        color: #fff;
+      }
+  
+      &-active {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        z-index: 3;
+      }
+  
+      &-prev {
+        transform: translateX(40%) scale(0.85) !important;
+        opacity: 0.8;
+        z-index: 1;
+        background: #b3b3b3;
+        opacity: 0.1;
+      }
+  
+      &-next {
+        transform: translateX(-40%) scale(0.85) !important;
+        opacity: 0.8;
+        z-index: 1;
+        background: #b3b3b3;
+        opacity: 0.1;
+      }
+    }
+  }

@@ -41,29 +41,4 @@
 
       <ion-button (click)="proximo()">Continuar</ion-button>
   </div>
-
-  <app-generic-modal
-  [isOpen]="showModal"
-  (didDismiss)="showModal = false"
-  [width]="'90%'"
-  [height]="'50%'"
-  [content]="modalTpl"
-></app-generic-modal>
-
-<ng-template #modalTpl>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Sugerimos um objetivo para voce!</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-button expand="block" (click)="applySuggestion()">
-      {{ suggestion }}
-    </ion-button>
-    <ion-button expand="block" (click)="applyCustom()">
-      Escolher outro
-    </ion-button>
-  </ion-content>
-</ng-template>
-  
 </ion-content>

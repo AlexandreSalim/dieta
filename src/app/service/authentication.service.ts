@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -28,7 +28,7 @@ export class AuthenticationService {
   
   constructor(private http: HttpClient) { }
 
-  login(payload: LoginRequest): Observable<AuthResponse> {
+login(payload: LoginRequest): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${this.base}/login`, payload)
       .pipe(
@@ -37,20 +37,64 @@ export class AuthenticationService {
           localStorage.setItem('token', res.token);
         })
       );
-  }
+}
 
-  createUser(payload: CreateUserRequest): Observable<CreateUserResponse> {
-    return this.http.post<CreateUserResponse>(
-      `${this.base}/users`,  // ajuste para a rota exata que você viu no Postman
-      payload
+createUser(payload: CreateUserRequest): Observable<CreateUserResponse> {
+  return this.http
+    .post<CreateUserResponse>(`${this.base}/users`, payload)
+    .pipe(
+      tap(res => {
+        // armazena o token para usar nas chamadas subsequentes
+        localStorage.setItem('token', res.token);
+      })
     );
-  }
+}
 
-  createUserHealth(payload: CreateUserHealth): Observable<CreateUserHealth> {
-    return this.http.post<CreateUserHealth>(
-      `${this.base}/users_health`,
-      payload
-    );
-  }
+createUserHealth(payload: CreateUserHealth): Observable<CreateUserHealth> {
+  let token = localStorage.getItem('token') as string;
+  return this.http.post<CreateUserHealth>(
+    `${this.base}/users_health`,
+    payload,
+    { headers: {
+      Authorization: token
+      }
+    }
+  );
+}
 
+getUser(): Observable<any> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    Authorization: `${token}`
+  });
+
+  return this.http.get<any>(`${this.base}/user-info`, { headers });
+}
+
+setDieta(id: number):Observable<any> {
+  const token = localStorage.getItem('token')!;
+  const headers = new HttpHeaders({
+    Authorization: `${token}`
+  });
+
+    return this.http.post(`${this.base}/diet/users`, { diet_id: id }, { headers, responseType: 'text' })
+}
+
+getDieta():Observable<any> {
+  const token = localStorage.getItem('token')!;
+  const headers = new HttpHeaders({
+    Authorization: `${token}`
+  });
+
+  return this.http.get<any>(`${this.base}/diet/users`,  { headers })
+}
+
+getGenerateDieta():Observable<any> {
+  const token = localStorage.getItem('token')!;
+  const headers = new HttpHeaders({
+    Authorization: `${token}`
+  });
+
+  return this.http.get<any>(`${this.base}/diets/generate`, {headers})
+}
 }

@@ -1,9 +1,9 @@
 <main>
-  <section>
+  <section style="display: flex;align-items: center;flex-direction: column;">
     <ion-avatar>
       <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
     </ion-avatar>
-    <h2 style="color: black;font-weight: bold;font-size: 24px;">Nome</h2>
+    <h2 style="color: black;font-weight: bold;font-size: 24px;">{{ nome }}</h2>
   </section>
     
     <section class="box" style="display: none;">
@@ -35,23 +35,23 @@
       <div class="dados">
         <div>
           <h2>Idade</h2>
-          <p>{{ '22' }} anos</p>
+          <p>{{ idade }} anos</p>
         </div>
         <div>
           <h2>Gênero</h2>
-          <p>{{ 'Feminino' }}</p>
+          <p>{{ genero }}</p>
         </div>
         <div>
           <h2>Altura</h2>
-          <p>{{ '167.3' }} cm</p>
+          <p>{{ altura }} cm</p>
         </div>
         <div>
           <h2>Peso</h2>
-          <p>{{ '68.9' }} kg</p>
+          <p>{{ peso }} kg</p>
         </div>
         <div style="border-bottom: none;">
           <h2>Meta de peso</h2>
-          <p>{{ '65' }} kg</p>
+          <p>{{ metaPeso }} kg</p>
         </div>
       </div>
     </section>

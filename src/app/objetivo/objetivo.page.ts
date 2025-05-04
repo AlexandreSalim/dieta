@@ -19,14 +19,14 @@ export class ObjetivoPage {
 
   public buffer = 0.06;
   public progress = 0.40;
-  threeSelection: 'emagrecer' | 'manter' | 'ganhar' | null = 'manter';
+  threeSelection: 'Lose Weight' | 'Maintain Weight' | 'Gain Muscle' | null = 'Maintain Weight';
 
   constructor(private userState: UserStateService, private router: Router) {
     addIcons({chevronBackOutline,barbellOutline,constructOutline});
   }
 
  
-  selectThree(goal: 'emagrecer' | 'manter' | 'ganhar') {
+  selectThree(goal: 'Lose Weight' | 'Maintain Weight' | 'Gain Muscle') {
     this.threeSelection = goal;
     this.userState.setPartialData({ goal });
   }

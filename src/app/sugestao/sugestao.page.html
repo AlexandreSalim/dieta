@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="box" style="justify-content: start;">
+    <app-progress-h1 [progress]="progress" [h1]="'Sugerimos um objetivo para você!'" style="width: 352px;"></app-progress-h1>
+
+    <div class="box box__internal">
+      <div class="rectangular-box">
+        <ion-img src="../../assets/img/escala.gif" *ngIf="suggestion === 'Lose Weight'"></ion-img>
+        <ion-img src="../../assets/img/exercicio.gif" *ngIf="suggestion === 'Maintain Weight'"></ion-img>
+        <ion-img src="../../assets/img/crescimento-muscular.gif" *ngIf="suggestion === 'Gain Muscle'"></ion-img>
+        <div class="ion-input">
+          <ion-label>{{ suggestion }}</ion-label>
+        </div>
+      </div>
+      <h3 *ngIf="suggestion === 'Lose Weight'">Se seu peso está acima do ideal, sugerimos perder peso para reduzir riscos de doenças e aumentar seu bem-estar.</h3>
+      <h3 *ngIf="suggestion === 'Maintain Weight'">Se seu peso já está adequado, o objetivo é manter esse equilíbrio para continuar saudável.</h3>
+      <h3 *ngIf="suggestion === 'Gain Muscle'">Se seu peso está abaixo do ideal, recomendamos ganhar peso para melhorar sua saúde e energia.</h3>
+    </div>
+
+    <ion-buttons >
+      <ion-button (click)="applyCustom()">Escolher outro</ion-button>
+      <ion-button (click)="applySuggestion()">Continuar</ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>

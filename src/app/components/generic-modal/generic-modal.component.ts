@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
 import { IonModal } from "@ionic/angular/standalone";
 
 @Component({
@@ -10,21 +10,21 @@ import { IonModal } from "@ionic/angular/standalone";
   imports: [IonModal, CommonModule],
 })
 export class GenericModalComponent {
-  /** controla se o modal está aberto */
+  @ViewChild(IonModal) private modal!: IonModal;  
   @Input() isOpen = false;
-
-  /** largura e altura podem vir em px, %, rem… */
   @Input() width = '90%';
   @Input() height = '50%';
-
-  /** aqui vai o template que o usuário passar quando usar o modal */
-  @Input() content!: TemplateRef<any>;
-
-  /** notifica quando o usuário fecha o modal (backdrop, botão, etc) */
+  @Input() content!: TemplateRef<any>;  
   @Output() didDismiss = new EventEmitter<void>();
   
   
   handleDismiss() {
+    console.log(this.isOpen)
+    this.isOpen = false;
     this.didDismiss.emit();
+  }
+
+  public close() {
+    this.modal.dismiss();
   }
 }

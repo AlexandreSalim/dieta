@@ -2,8 +2,6 @@
 export interface CreateUserRequest {
     full_name: string;
     email: string;
-    age: number;
-    gender: string;
     phone: string;
     password: string;
   }
@@ -15,13 +13,13 @@ export interface CreateUserRequest {
     age: number;
     gender: string;
     phone: string;
+    token: string;
   }
 
   export interface CreateUserHealth {
-    age: string;
+    age: number;
     gender: string;
-    user_id: string;
-    height_cm: string;
-    weight_kg: string;
+    height_cm: number;
+    weight_kg: number;
     goal: string;
   }

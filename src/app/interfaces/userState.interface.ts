@@ -1,3 +1,6 @@
+import { DietOption } from "../escolher-dieta/escolher-dieta.page";
+import { Refeicao } from "../service/workout.service";
+
 // src/app/models/user-state.model.ts
 export interface UserState {
   name: string;
@@ -11,4 +14,5 @@ export interface UserState {
   training_level: string;    // idem
   goal: string;
   phone: string;
+  dieta: number;  
 }

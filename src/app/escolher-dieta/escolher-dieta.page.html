@@ -1,0 +1,25 @@
+<ion-content class="ion-padding" style="background-color: white;">
+  <ng-container *ngIf="dietOptions.length; else loading" style="background-color: white;">
+    <ion-title>Escolha sua dieta</ion-title>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let option of dietOptions; let i = index">
+            <ion-card-content>
+              <h1>Opção {{ i + 1 }} – {{ option.goal }}</h1>
+              <p>{{ option.total_calorie_content }} kcal/dia</p>
+              <div *ngFor="let item of option.itens" style="margin-top: 8px;">
+                <strong>{{ item.meal_name }}:</strong>
+                <p>{{ item.meal_nutrition }}</p>
+              </div>
+              <ion-button expand="block" (click)="selectOption()">Selecionar</ion-button>
+            </ion-card-content>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando dietas…</p>
+  </ng-template>
+</ion-content>
