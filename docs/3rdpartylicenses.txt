@@ -123,6 +123,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@awesome-cordova-plugins/app-rate
+MIT
+
+@awesome-cordova-plugins/core
+MIT
+
+@awesome-cordova-plugins/email-composer
+MIT
+
+@awesome-cordova-plugins/in-app-browser
+MIT
+
+@awesome-cordova-plugins/social-sharing
+MIT
+
 @babel/runtime
 MIT
 MIT License
