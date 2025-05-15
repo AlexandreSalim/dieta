@@ -29,6 +29,7 @@ main {
     width: 80%;
     text-align: start;
     font-weight: bold;
+    color: black;
   }
 
   .box {
@@ -55,7 +56,7 @@ main {
       a {
         font-style: italic;
 
-        color: #39b4b1;
+        color:  var(--verde-claro);
       }
       ion-icon {
         font-size: 40px;
@@ -100,7 +101,7 @@ main {
       padding-bottom: 15px;
 
       ion-progress-bar {
-        --progress-background: #39b4b1; 
+        --progress-background: var(--verde-escuro); 
         --background: #b3b3b3;
         border-radius: 30px;
         padding: 8px;
@@ -179,10 +180,12 @@ ion-footer {
   position: fixed;
   bottom: 0;
   height: 77px;
-
+  
   ion-toolbar {
+    display: flex;
     border-radius: 20px 20px 0 0;
     height: 77px;
+    --border-style: none;
   }
 
   .footerIcons {
@@ -202,6 +205,32 @@ ion-footer {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.chips {
+  display: flex;
+  justify-content: center;
+  
+  ion-chip {
+    font-family: "Montserrat", sans-serif !important;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    p {
+      margin: 0;
+    }
+    &:nth-child(1) {
+      background-color: #c14848;
+    }
+    &:nth-child(2) {
+      background-color: #764fa5;
+    }
+    &:nth-child(3) {
+      background-color: #4c9e7c;
+    }
+  }
 }
 
 @keyframes metaBatida {
@@ -232,7 +261,7 @@ ion-footer {
   .custom-checkbox .checkmark {
     width: 34px;
     height: 34px;
-    border: 2px solid #39b4b1;
+    border: 2px solid var(--verde-escuro);
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -250,8 +279,8 @@ ion-footer {
   }
   
   .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-    background-color: #39b4b1;
-    border-color: #39b4b1;
+    background-color: var(--verde-escuro);
+    border-color: var(--verde-escuro);
     transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
   }
   
@@ -260,11 +289,11 @@ ion-footer {
   }
   
   .custom-checkbox:hover {
-    color: #39b4b1;
+    color: var(--verde-escuro);
   }
   
   .custom-checkbox:hover .checkmark {
-    border-color: #39b4b1;
+    border-color: var(--verde-escuro);
     background-color: #f0f0f0;
     transform: scale(1.05);
   }
@@ -277,5 +306,9 @@ ion-footer {
   .custom-checkbox .checkmark,
   .custom-checkbox input[type="checkbox"]:checked + .checkmark {
     transition: background-color 1.3s, border-color 1.3s, color 1.3s, transform 0.3s;
+  }
+
+  ion-menu-button {
+    color: black;
   }
   

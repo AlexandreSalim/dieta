@@ -5,7 +5,7 @@
       <div class="box box__internal">
         <div class="rectangular-box">
           <div class="img">
-            <img src="../../assets/img/icon_peso_balança.svg"/>
+            <img src="assets/img/icon_peso_balança.svg"/>
           </div>
           <div class="ion-input">
             <ion-label>Seu peso</ion-label>
@@ -18,7 +18,7 @@
                 enterkeyhint="next"
                 (keyup.enter)="focusAltura()" 
                 mask="000"
-                placeholder="000"/>             
+                placeholder="00"/>             
               <h1>KG</h1>
             </div>
           </div>
@@ -26,12 +26,12 @@
 
         <div class="rectangular-box">
           <div class="img">
-            <img src="../../assets/img/icon_altura.svg"/>
+            <img src="assets/img/icon_altura.svg"/>
           </div>          
           <div class="ion-input">
             <ion-label>sua altura</ion-label>
             <div style="display: flex;align-items: center;">
-              <input #alturaInput [(ngModel)]="altura" id="altura" type="text" mask="000" placeholder="000" (keyup.enter)="proximo()">
+              <input #alturaInput [(ngModel)]="altura" id="altura" type="text" mask="000" placeholder="00" (keyup.enter)="proximo()">
               <h1>CM</h1>
             </div>
 

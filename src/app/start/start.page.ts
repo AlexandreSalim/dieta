@@ -11,8 +11,12 @@ import { IonHeader, IonContent, IonToolbar, IonTitle } from "@ionic/angular/stan
 export class StartPage implements OnInit {
 
   constructor(private readonly _router: Router) { }
-
+  showSplash = true;
+  
   ngOnInit() {
+     setTimeout(() => {
+      this.showSplash = false;
+    }, 5000);
   }
 
   escolha() {

@@ -1,6 +1,43 @@
-<ion-content color="ligth">
+<ion-content style="--background: var(--cinza-claro);">
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="ligth" style="border-style: none;">
+        <section style="display: flex;align-items: center;justify-content: center;">
+          <div style="background-color: black;width: 130px;height: 30px;"></div>
+        </section>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="ligth" class="ion-padding">
+      <section class="menu" style="justify-content: space-between;">
+        <div class="menu">
+          <ion-icon name="moon-outline"></ion-icon>
+          <p>Modo escuro</p>
+        </div>
+        <ion-toggle
+        ></ion-toggle>
+      </section>
 
+      <section class="menu" (click)="rateApp()">
+        <ion-icon name="star-outline"></ion-icon>
+        <p>Nos avalie</p>
+      </section>
 
+      <section class="menu" (click)="shareApp()">
+        <ion-icon name="share-social-outline"></ion-icon>
+        <p>Compartilhe com amigos</p>
+      </section>
+
+      <section class="menu">
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <p>Faq(Perguntas Frequentes)</p>
+      </section>
+
+      <section class="menu" (click)="contactSupport()">
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        <p>Fale Conosco</p>
+      </section>
+    </ion-content>
+  </ion-menu>
 
   <header>
     <div class="ion-page" id="main-content">
@@ -15,7 +52,7 @@
   
   <main *ngIf="home">
     
-    <h1>Olá, Maria!</h1>
+    <h1>Olá, {{ user.full_name }}!</h1>
 
     <section class="box" style="display: none;">
       <div class="boxOne">
@@ -65,23 +102,67 @@
         </div>
       </div>
     </section>
+
     <!-- dieta -->
-    <section class="box">
+    <section class="box" *ngIf="currentMeal as meal; else noMeal">
       <div class="boxOne">
         <h2>Dieta</h2>
         <a>Ativar lembrete</a>     
       </div>
       <div style="text-align: start;font-family: 'Montserrat', sans-serif">
-        <h2 style="color: #39b4b1;font-weight: bold;font-size: 20px;">06:00 - Café da manhã</h2>
-        <div style="display: flex;align-items: center;justify-content: space-between;">
-          <p style="width: 80%;font-size: 15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et cum illum autem laudantium rerum, modi voluptatum error</p>
+        <h2 style="color: var(--verde-claro);font-weight: bold;font-size: 20px;">{{ meal.meal_time.slice(0,5) }} - {{ meal.meal_name }}</h2>
+        <div style="display: flex;align-items: center;justify-content: space-between;margin: 0 0 25px;">
+          <p style="width: 80%;font-size: 15px;margin: 0;">{{ meal.meal_nutrition }}</p>
           <label class="custom-checkbox">
-            <input name="dummy" type="checkbox">
+            <input 
+              name="dummy" 
+              type="checkbox" 
+              #checkbox 
+              [checked]="isChecked(meal.calorie_content)"
+              (change)="
+                onToggleMeal(
+                  checkbox.checked,
+                  meal.calorie_content,
+                  meal.calorie_content
+                )
+              ">
             <span class="checkmark"></span>
           </label> 
         </div>
+          <section style="display: flex;align-items: center;justify-content: space-around;">
+                <div class="chips">
+                  <ion-chip >
+                    {{ meal.calorie_content | number:'1.0-0' }}g
+                    <p>Proteínas</p>
+                  </ion-chip>
+                  <ion-chip>
+                    {{ meal.carbohydrate_content | number:'1.0-0' }}g
+                    <p>Carboidratos</p>
+                  </ion-chip>
+                  <ion-chip >
+                    {{ meal.protein_content | number:'1.0-0' }}g
+                    <p>Gorduras</p>
+                  </ion-chip>
+                </div>
+          </section>
       </div>
+
     </section>
+    <ng-template #noMeal>
+      <section 
+        style="
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        position: absolute;
+        height: 700px;
+        background-color: azure;">
+        <div class="box" style="display: flex;align-items: center;justify-content: center;z-index: 10;height: 400px;">
+          <ion-button (click)="fazerCadastro()">Você não terminou seu cadastro, volte a termine!</ion-button>
+        </div>
+      </section>
+    </ng-template>
+
     <!-- hidrico -->
     <section class="box" style="display: none;">
 
@@ -118,30 +199,10 @@
       </div>
     </section>
     <!-- solicitar uma nova dieta -->
-    <section class="box">
-      <div>solicitar uma nova dieta</div>
+    <section class="box" style="display: flex;align-items: center;justify-content: center;">
+      <ion-button>solicitar uma nova dieta</ion-button>
     </section>
   </main>  
-
-  <section style="margin-top: 24px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
-    <app-daily-chart
-    style="max-width: 350px;width: 350px;"
-    *ngIf="daily"
-    [days]="['30','31','01','02','03','04','05']"
-    [values]="[8,5,6,6,3,3,4,]"
-    [highlightIndex]="3" 
-    [title]="'Refeições diárias'"
-  ></app-daily-chart>
-
-  <app-daily-chart
-  [title]="'Relatorio Semanal de Hidratação'"
-  style="max-width: 350px;width: 350px;margin-bottom: 90px;display: none;"
-  *ngIf="daily"
-  [days]="['30','31','01','02','03','04','05']"
-  [values]="[8,5,6,6,3,3,4,]"
-  [highlightIndex]="3" 
-></app-daily-chart>
-  </section>
 
   <ng-template #meuModalBody>
     <main class="ngTemplateHome">
@@ -187,7 +248,6 @@
 </ng-template>
 
 
-
   <app-generic-modal
     [isOpen]="showModal"
     [width]="'100%'"               
@@ -204,47 +264,37 @@
     (didDismiss)="showModalTime = false"
   ></app-generic-modal>
 
-  <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar color="ligth">
-        <section style="display: flex;align-items: center;justify-content: center;">
-          <div style="background-color: black;width: 130px;height: 30px;"></div>
-        </section>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content color="ligth" class="ion-padding">
-      <section class="menu" style="justify-content: space-between;">
-        <div class="menu">
-          <ion-icon name="moon-outline"></ion-icon>
-          <p>Modo escuro</p>
-        </div>
-        <ion-toggle></ion-toggle>
-      </section>
-
-      <section class="menu">
-        <ion-icon name="star-outline"></ion-icon>
-        <p>Nos avalie</p>
-      </section>
-
-      <section class="menu">
-        <ion-icon name="share-social-outline"></ion-icon>
-        <p>Compartilhe com amigos</p>
-      </section>
-
-      <section class="menu">
-        <ion-icon name="help-circle-outline"></ion-icon>
-        <p>Faq(Perguntas Frequentes)</p>
-      </section>
-
-      <section class="menu">
-        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-        <p>Fale Conosco</p>
-      </section>
-    </ion-content>
-  </ion-menu>
-
   <app-dieta *ngIf="dieta"></app-dieta>
   <app-perfil *ngIf="perfil"></app-perfil>
+  <!-- grafico -->
+  <section *ngIf="!home" style="margin-top: 35px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+    <app-daily-chart
+    style="max-width: 360px; width: 360px;"
+    *ngIf="daily"
+    [days]="days"
+    [values]="values"
+    [highlightIndex]="highlightIndex"
+    [title]="'Calorias diárias'"
+  ></app-daily-chart>
+<!-- 
+  <app-daily-chart
+  style="max-width: 350px;width: 350px;display: none;"
+  *ngIf="daily"
+  [days]="chartDays"
+  [values]="chartValues"
+  [highlightIndex]="todayIndex" 
+  [title]="'Refeições diárias'"
+></app-daily-chart>
+
+  <app-daily-chart
+  [title]="'Relatorio Semanal de Hidratação'"
+  style="max-width: 350px;width: 350px;margin-bottom: 90px;display: none;"
+  *ngIf="daily"
+  [days]="['30','31','01','02','03','04','05']"
+  [values]="[8,5,6,6,3,3,4,]"
+  [highlightIndex]="3" 
+></app-daily-chart> -->
+  </section>
    
   <ion-footer>
     <ion-toolbar color="ligth">

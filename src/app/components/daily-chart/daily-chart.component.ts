@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -20,7 +20,7 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels;
   tooltip: ApexTooltip;
   fill: ApexFill;
-  title: ApexTitleSubtitle;        // <-- adicionado
+  title: ApexTitleSubtitle;
   subtitle: ApexTitleSubtitle;
 };
 
@@ -30,59 +30,73 @@ export type ChartOptions = {
   styleUrls: ['./daily-chart.component.scss'],
   imports: [NgApexchartsModule, CommonModule]
 })
-export class DailyChartComponent implements OnChanges {
-  sem = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
-  @Input() days: string[] = [];     // ex: ['30','31','01','02','03','04','05']
-  @Input() values: number[] = [];   // ex: [5,5,6,6,3,0,0]
-  @Input() highlightIndex?: number; // ex: 4 para “03”
+export class DailyChartComponent implements OnInit, OnChanges {
+  daily = false;
+  sem = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+
+  @Input() days: string[] = [];
+  @Input() values: number[] = [];
+  @Input() highlightIndex?: number;
   @Input() title: string = '';
-  
 
   public chartOptions!: ChartOptions;
 
-  ngOnChanges() {
-    // cores: barras não selecionadas em cinza-claro, a selecionada em teal
-    const colors = this.values.map((_, i) =>
-      i === this.highlightIndex ? '#3ec9c9' : '#3ec9c9'
+  ngOnInit() {
+    const keyMap = 'caloriesByDate';
+    const map: Record<string, number> = JSON.parse(
+      localStorage.getItem(keyMap) || '{}'
     );
 
-   // ...
-this.chartOptions = {
-  series: [{ data: this.values }],
-  chart: { type: 'bar', height: 320, toolbar: { show: false }, },
-  title: {
-    text: 'Meu desempenho',
-    align: 'left',
-    margin: 20,
-    style: {
-      fontSize: '18px',
-      fontWeight: '600',
-      color: '#333'
+    const dates: Date[] = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      dates.push(d);
     }
-  },
-  subtitle: {
-    offsetX: 0,
-    offsetY: 13,
-    text: 'último',
-    align: 'right',
-    style: {
-      fontSize: '14px',
-      color: '#3ec9c9'
-    }
-  },
-  plotOptions: {
-    bar: { distributed: false, columnWidth: '40px', borderRadius: 15, borderRadiusApplication: 'end' }
-  },
-  dataLabels: { enabled: false },
-  xaxis: {
-    categories: this.days,
-    labels: { show: false },
-    axisBorder: { show: false },
-    axisTicks:  { show: false }
-  },
-  tooltip: { y: { formatter: v => `${v}` } },
-  fill: { colors },
-};
 
+    this.days = dates.map(d => d.getDate().toString().padStart(2, '0'));
+    this.values = dates.map(d => {
+      const key = d.toISOString().slice(0, 10);
+      return map[key] || 0;
+    });
+
+    this.highlightIndex = this.days.length - 1;
+    this.daily = true;
+  }
+
+  ngOnChanges() {
+    const colors = this.values.map((_, i) =>
+      i === this.highlightIndex ? '#e0e0e0' : '#3ec9c9'
+    );
+
+    this.chartOptions = {
+      series: [{ data: this.values }],
+      chart: { type: 'bar', height: 320, toolbar: { show: false }, },
+      title: {
+        text: this.title || 'Meu desempenho',
+        align: 'left',
+        margin: 20,
+        style: { fontSize: '18px', fontWeight: '600', color: '#333' }
+      },
+      subtitle: {
+        offsetX: 0,
+        offsetY: 13,
+        text: 'último',
+        align: 'right',
+        style: { fontSize: '14px', color: '#3ec9c9' }
+      },
+      plotOptions: {
+        bar: { distributed: false, columnWidth: '30px', borderRadius: 7, borderRadiusApplication: 'end', }
+      },
+      dataLabels: { enabled: false },
+      xaxis: {
+        categories: this.days,
+        labels: { show: false },
+        axisBorder: { show: false },
+        axisTicks: { show: false }
+      },
+      tooltip: { y: { formatter: v => `${v}` } },
+      fill: { colors }
+    };
   }
 }

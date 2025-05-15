@@ -8,10 +8,24 @@
             <h3 style="color: black;">{{ dieta.meal_name }}</h3>
             <p style="color: black;" >{{ dieta.meal_nutrition }}</p>
 
-            <p>Calorias: {{ dieta.calorie_content }}</p>
-            <p>Carboidratos: {{ dieta.carbohydrate_content }}</p>
-            <p>Proteínas: {{ dieta.protein_content }}</p>
-            <p>Gorduras: {{ dieta.fat_content }}</p>
+            <div class="chips">
+              <ion-chip >
+                {{ dieta.calorie_content | number:'1.0-0' }}g 
+                <p>Caloria</p>
+              </ion-chip>
+              <ion-chip>
+                {{ dieta.carbohydrate_content | number:'1.0-0' }}g
+                <p>Carboidratos</p>
+              </ion-chip>
+              <ion-chip >
+                {{ dieta.protein_content | number:'1.0-0' }}g 
+                <p>Proteínas</p>
+              </ion-chip>
+              <ion-chip >
+                {{ dieta.fat_content | number:'1.0-0' }}g
+                <p>Gordura</p>
+              </ion-chip>
+            </div>
           </div>
 
         </div>

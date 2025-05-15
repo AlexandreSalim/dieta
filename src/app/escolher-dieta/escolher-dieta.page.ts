@@ -11,18 +11,6 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../service/authentication.service';
 import { SwiperOptions } from 'swiper/types';
 
-interface Dieta {
-  modelo: string;
-  calorias: number;
-  proteinas: number;
-  carboidratos: number;
-  gorduras: number;
-  cardapio: Refeicao[][];
-  nivelTreino: string;
-}
-
-type Objetivo = 'perder' | 'manter' | 'ganhar';
-
 export interface GeneratedDietItem {
   id: number;
   meal_times_nutrition_id: number;
@@ -79,7 +67,7 @@ export class EscolherDietaPage implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private userStateService: UserStateService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -108,7 +96,7 @@ export class EscolherDietaPage implements OnInit {
     const selected = this.dietOptions[this.currentIndex];
     this.userStateService.setPartialData({ dieta: selected.id });
     this.authService.setDieta(selected.id).subscribe({
-      next: () => this.router.navigate(['/home']),
+      next: () => this.router.navigate(['/home']).then(() => window.location.reload()),
       error: err => console.error('Erro ao salvar dieta:', err)
     });
   }

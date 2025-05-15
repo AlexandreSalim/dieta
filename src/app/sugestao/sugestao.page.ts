@@ -15,6 +15,7 @@ import { NgIf } from '@angular/common';
 export class SugestaoPage implements OnInit {
 
   suggestion: 'Lose Weight' | 'Maintain Weight' | 'Gain Muscle' = 'Maintain Weight';
+  suggestionLayout = '';
   public progress = 0.80;
 
   constructor(private userStateService: UserStateService, private router: Router) { }
@@ -23,9 +24,18 @@ export class SugestaoPage implements OnInit {
     const userstate = this.userStateService.getCurrentData()
     const imc = Number(userstate.weight) / Math.pow(Number(userstate.height) / 100, 2);
     
-    if (imc < 18.5) this.suggestion = 'Gain Muscle' 
-    else if (imc < 24.9) this.suggestion = 'Maintain Weight'
-    else this.suggestion = 'Lose Weight'
+    if (imc < 18.5) {
+      this.suggestion = 'Gain Muscle'
+      this.suggestionLayout = 'Ganhar peso'
+    } 
+    else if (imc < 24.9) {
+      this.suggestion = 'Maintain Weight'
+      this.suggestionLayout = 'Manter peso'
+    }
+    else {
+      this.suggestion = 'Lose Weight'
+      this.suggestionLayout = 'Perder peso'
+    }
   }
      /** Aplica sugestão baseada no IMC */
      applySuggestion() {

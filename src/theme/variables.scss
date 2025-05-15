@@ -15,3 +15,11 @@
 	--ion-color-shade: var(--ion-color-ligth-shade);
 	--ion-color-tint: var(--ion-color-ligth-tint);
 }
+
+body.dark {  
+	--ion-color-primary:    #222831;
+	--ion-color-secondary:  #393e46;
+	--ion-text-color:       #e6e6e6;
+	--ion-background-color: #121212;
+	/* ... substitua aqui as versões escuras das suas variáveis ... */
+  }

@@ -35,6 +35,8 @@
     --background: #35a59f;
     text-transform: uppercase;
     font-weight: 600;
+    height: 36px;
+    color: white;
   }
   
   .swiper-container {
@@ -47,8 +49,8 @@
     }
   
     .swiper-slide {
-      width: 332px;
-      height: 595px;
+      // width: 360x;
+      height: 620px;
       background: #ffffff;
       border-radius: 15px;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,7 +78,6 @@
         opacity: 0.8;
         z-index: 1;
         background: #b3b3b3;
-        opacity: 0.1;
       }
   
       &-next {
@@ -84,7 +85,6 @@
         opacity: 0.8;
         z-index: 1;
         background: #b3b3b3;
-        opacity: 0.1;
       }
     }
   }

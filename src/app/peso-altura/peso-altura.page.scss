@@ -51,7 +51,7 @@
                     font-weight: bold;
                     background-color: transparent;
                     border: none;
-                    width: 78px;
+                    width: 100px;
                 }
 
                 input:focus-visible {
@@ -61,6 +61,8 @@
 
                 h1 {
                     font-size: 25px;
+                    left: -25px;
+                    position: relative;
                     color: #535353c2;
                     margin: 0;
                     font-weight: bold;

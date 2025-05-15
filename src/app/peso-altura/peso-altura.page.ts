@@ -24,8 +24,8 @@ export class PesoAlturaPage implements AfterViewInit {
   @ViewChild('alturaInput', { static: false }) alturaInput!: ElementRef<HTMLInputElement>;
 
   public progress = 0.60;
-  altura: string = '175';
-  peso: string = '60';
+  altura: string = '';
+  peso: string = '';
 
   constructor(private userState: UserStateService, private router: Router) {
     addIcons({chevronBackOutline,barbellOutline,constructOutline});

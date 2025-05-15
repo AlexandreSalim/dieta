@@ -12,15 +12,15 @@
   h1 {
     font-weight: bold;
     margin: 0 10px;
-
+    color: black;
   }
 }
 
 .labels-row {
   position: absolute;
   bottom: 40px;
-  left: 35px;
-  gap: 3.4px;
+  left: 52px;
+  gap: 12.4px;
   right: 0;
   display: flex
 ;
@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: center;
   height: 40px;
-  width: 40.1px;
+  width: 31.1px;
   background-color: #e6e6e6;
   padding: 4px 0;
   border-bottom-left-radius: 15px;
@@ -47,19 +47,19 @@
     margin: 0;
   }
   &:nth-child(2) {
-    margin: 0 0 0 0.4px;
+    margin: 0 0 0 0;
   }
   &:nth-child(3) {
-    margin: 0 0 0 0.4px;
+    margin: 0 0 0 0;
   }
   &:nth-child(4) {
-    margin: 0 0 0 0.4px;
+    margin: 0 0 0 0;
   }
   &:nth-child(5) {
-    margin: 0 0 0 0.4px;
+    margin: 0 0 0 0;
   }
   &:nth-child(6) {
-    margin: 0 0 0 0.4px;
+    margin: 0 0 0 0;
   }
 
 }

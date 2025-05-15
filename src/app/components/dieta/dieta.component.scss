@@ -1,12 +1,13 @@
 .tela {
-    height: 100vh;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 0 40px;
+    margin: 20px 10px;
     margin-bottom: 80px;
     font-family: "Montserrat", sans-serif !important;
+    background-color: white;
+    border-radius: 20px;
   }
 
   .refeicoes {
@@ -18,23 +19,65 @@
     .refeicao {
       border-bottom: 1px solid #bdbaba;
       color: #bdbaba;
-      padding-bottom: 10px;
+      padding: 0 15px 20px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 25px;
+      text-align: center;
+      width: 86%;
+      margin-left: 29px;
 
       h3 {
         font-weight: bold;
       }
 
       p {
-        margin: 0;
+        margin: 0 0 10px;
         color: #373737;
-        font-size: small;
+        font-size: large;
         font-weight: bold;
       }
-    }
 
+      .chips {
+        display: flex;
+        gap: 3px;
+
+        ion-chip {
+          color: white;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          gap: 2px;
+          width: 80px;
+          align-items: center;
+          font-size: 11px;
+          margin: 0;
+          min-height: 25px;
+          padding: 0;
+
+          p {
+            color: white;
+            margin: 0;
+            font-size: 10px;
+          }
+          &:nth-child(1) {
+            background-color: #F57C00;
+          }
+          &:nth-child(2) {
+            background-color: #764fa5;
+            width: 100px;
+          }
+          &:nth-child(3) {
+            background-color: #c14848;
+          }
+          &:nth-child(4) {
+            background-color: #4c9e7c;
+          }
+        }
+      }
+    }
+    
     .refeicao:nth-child(6) {
       border-bottom: none;
     }
@@ -63,24 +106,6 @@
       align-items: center;
     //   padding: 20px;
       gap: 6px;
-  
-      .chips {
-        display: flex;
-        justify-content: center;
-  
-        ion-chip {
-          color: white;
-          &:nth-child(1) {
-            background-color: #c14848;
-          }
-          &:nth-child(2) {
-            background-color: #764fa5;
-          }
-          &:nth-child(3) {
-            background-color: #4c9e7c;
-          }
-        }
-      }
     }
   }
   

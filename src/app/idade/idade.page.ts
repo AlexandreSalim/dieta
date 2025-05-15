@@ -21,7 +21,7 @@ export class IdadePage {
   @ViewChild('idadeTemplate', { static: false }) idadeTemplate!: ElementRef<HTMLInputElement>;
 
   public progress = 0.40;
-  idade: string = '00';
+  idade: string = '';
 
   constructor(private userState: UserStateService, private router: Router) {
     addIcons({});
