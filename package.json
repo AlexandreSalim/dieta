@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "@angular/service-worker": "^19.0.0",
     "@awesome-cordova-plugins/app-rate": "^6.16.0",
     "@awesome-cordova-plugins/email-composer": "^6.16.0",
     "@awesome-cordova-plugins/in-app-browser": "^6.16.0",
