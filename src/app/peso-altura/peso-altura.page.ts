@@ -23,7 +23,7 @@ export class PesoAlturaPage implements AfterViewInit {
   @ViewChild('pesoInput', { static: false }) pesoInput!: ElementRef<HTMLInputElement>;
   @ViewChild('alturaInput', { static: false }) alturaInput!: ElementRef<HTMLInputElement>;
 
-  public progress = 0.60;
+  public progress = 0.45;
   altura: string = '';
   peso: string = '';
 

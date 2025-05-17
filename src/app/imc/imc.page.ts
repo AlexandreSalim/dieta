@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonIcon, IonButton, IonSpinner } from '@ionic/angular/standalone';
@@ -13,6 +13,8 @@ import { CreateUserHealth, CreateUserRequest } from '../interfaces/createUser.in
 import { AuthenticationService } from '../service/authentication.service';
 import { switchMap, tap } from 'rxjs';
 import { LoginRequest } from '../interfaces/login.interface';
+import { ViewWillEnter } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-imc',
@@ -26,13 +28,13 @@ import { LoginRequest } from '../interfaces/login.interface';
     CommonModule, 
     FormsModule, 
     ProgressH1Component,
-    InfoPopoverComponent
+    InfoPopoverComponent,
   ]
 })
-export class ImcPage implements OnInit {
+export class ImcPage implements OnInit, ViewWillEnter {
 
   public buffer = 0.06;
-  public progress = 1;
+  public progress = 0.80;
 
   peso: string | undefined;
   altura: string | undefined;
@@ -64,6 +66,13 @@ export class ImcPage implements OnInit {
     this.altura = relatorio.height
     this.peso = relatorio.weight    
     setTimeout(() => this.calculo(), 300 )
+  }
+
+ ionViewWillEnter(): void {
+    const relatorio = this.userStateService.getCurrentData();
+    this.altura = relatorio.height;
+    this.peso   = relatorio.weight;
+    this.calculo();
   }
 
   calculo() {
@@ -118,22 +127,22 @@ export class ImcPage implements OnInit {
     await popover.present();
   }
 
-  home() {
+  payment() {
     const data = this.userStateService.getCurrentData();
 
     const userPayload: CreateUserHealth = {
-      weight_kg: Number(data.weight),
-      height_cm: Number(data.height),
       age: Number(data.age),
       gender: data.gender!,
+      height_cm: Number(data.height),
+      weight_kg: Number(data.weight),
       goal: data.goal!,
     };
     console.log(userPayload);
 
     this.authenticationService.createUserHealth(userPayload).subscribe({
       next: () => {
-        console.log('✔️ tudo enviado com sucesso, indo para home');
-        this.userStateService.clearData();
+        console.log('✔️ tudo enviado com sucesso, indo para payment');
+        // this.userStateService.clearData();
         this.router.navigate(['/payment-sheet'])
       },
 

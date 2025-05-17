@@ -1,21 +1,40 @@
 import { Injectable } from '@angular/core';
 import { UserState } from '../interfaces/userState.interface';
 
+const STORAGE_KEY = 'tempUserData';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserStateService {
   private tempUserData: Partial<UserState> = {};
 
-  setPartialData(data: Partial<UserState>) {
-    this.tempUserData = { ...this.tempUserData, ...data };
+  constructor() {
+    // Ao instanciar, tenta carregar do localStorage
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        this.tempUserData = JSON.parse(saved);
+      } catch {
+        this.tempUserData = {};
+      }
+    }
   }
 
-  getCurrentData() {
+  /** Atualiza o estado parcial e grava no localStorage */
+  setPartialData(data: Partial<UserState>) {
+    this.tempUserData = { ...this.tempUserData, ...data };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tempUserData));
+  }
+
+  /** Retorna o estado atual (carregado da memória) */
+  getCurrentData(): Partial<UserState> {
     return this.tempUserData;
   }
 
+  /** Limpa o estado em memória e no localStorage */
   clearData() {
     this.tempUserData = {};
+    localStorage.removeItem(STORAGE_KEY);
   }
 }

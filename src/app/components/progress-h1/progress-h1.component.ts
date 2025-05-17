@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonProgressBar, IonIcon } from "@ionic/angular/standalone";
 
 @Component({
@@ -14,13 +15,20 @@ export class ProgressH1Component  implements OnInit {
 
   @Input({ required: true}) progress: number = 0;
   @Input({ required: true}) h1: string = '';
+   @Input() backRoute?: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
   
   telaAnterior() {
-    history.back();
+    if (this.backRoute) {
+      // se a rota foi passada, navega pra ela
+      this.router.navigateByUrl(this.backRoute);
+    } else {
+      // fallback: volta no histórico
+      history.back();
+    }
   }
 }

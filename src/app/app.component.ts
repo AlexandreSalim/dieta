@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { FcmService } from './service/fcm.service';
+import { App as CapacitorApp } from '@capacitor/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,22 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private fcm: FcmService,
+    private router: Router
   ) {
+  }
+
+   initializeApp() {
+    this.platform.ready().then(() => {
+      // Escuta o botão de voltar
+      CapacitorApp.addListener('backButton', () => {
+        // Se estiver na rota raiz, fecha o app
+        if (this.router.url === '/start') {
+          CapacitorApp.exitApp();
+        } else {
+          // Senão, volta uma página no histórico
+          this.router.navigate(['../']);
+        }
+      });
+    });
   }
 }

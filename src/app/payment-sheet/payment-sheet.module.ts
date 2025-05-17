@@ -8,6 +8,7 @@ import { PaymentSheetPageRoutingModule } from './payment-sheet-routing.module';
 
 import { PaymentSheetPage } from './payment-sheet.page';
 import { GenericModalComponent } from "../components/generic-modal/generic-modal.component";
+import { ProgressH1Component } from "../components/progress-h1/progress-h1.component";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { GenericModalComponent } from "../components/generic-modal/generic-modal
     FormsModule,
     IonicModule,
     PaymentSheetPageRoutingModule,
-    GenericModalComponent
+    GenericModalComponent,
+    ProgressH1Component
 ],
   declarations: [PaymentSheetPage]
 })

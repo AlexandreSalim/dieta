@@ -1,7 +1,6 @@
-<ng-template #meuModalBody>
-    <main>
+    <main style="display: flex;align-items: center;flex-direction: column;">
+      <app-progress-h1 [backRoute]="'/imc'" [progress]="progress" [h1]="''" style="width: 352px;"></app-progress-h1>
       <section class="body">
-
         <div>
           <h1>Por que usar este app?</h1>
         </div>
@@ -39,25 +38,9 @@
           <div class="valor title">
             <p>por apenas</p>
             <h3>R$</h3>
-            <h1>30,00</h1>
+            <h1>49,90</h1>
           </div>
-          <ion-button (click)="googlepay()"><p>Pagar agora!</p></ion-button>
+          <ion-button (click)="pay()"><p>Pagar agora!</p></ion-button>
         </div>
       </section>
     </main>
-</ng-template>
-    
-    
-  <app-generic-modal
-    [isOpen]="showModal"
-    [width]="'100%'"               
-    [height]="'100%'"              
-    [content]="meuModalBody"
-    (didDismiss)="showModal = false"
-  ></app-generic-modal>
-  
-  <!-- <div class="button">
-    <ion-button expand="block" class="ion-margin-top" (click)="googlepay()">googlepay</ion-button>
-    <ion-button expand="block" class="ion-margin-top" (click)="paymentShet()">paymentShet</ion-button>
-    <ion-button expand="block" class="ion-margin-top" (click)="applePay()">applePay</ion-button>
-  </div> -->

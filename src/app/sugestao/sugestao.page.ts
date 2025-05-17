@@ -16,7 +16,7 @@ export class SugestaoPage implements OnInit {
 
   suggestion: 'Lose Weight' | 'Maintain Weight' | 'Gain Muscle' = 'Maintain Weight';
   suggestionLayout = '';
-  public progress = 0.80;
+  public progress = 0.60;
 
   constructor(private userStateService: UserStateService, private router: Router) { }
 

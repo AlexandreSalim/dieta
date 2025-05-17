@@ -17,7 +17,7 @@ import { ProgressH1Component } from "../components/progress-h1/progress-h1.compo
 })
 export class EscolhaPage implements OnInit {
 
-  public progress = 0.20;
+  public progress = 0.15;
   selectedGender: 'female' | 'male' | null = null;
 
   constructor(private userState: UserStateService, private router: Router) {

@@ -18,7 +18,7 @@ import { ProgressH1Component } from '../components/progress-h1/progress-h1.compo
 export class ObjetivoPage {
 
   public buffer = 0.06;
-  public progress = 0.40;
+  public progress = 0.60;
   threeSelection: 'Lose Weight' | 'Maintain Weight' | 'Gain Muscle' | null = 'Maintain Weight';
 
   constructor(private userState: UserStateService, private router: Router) {
