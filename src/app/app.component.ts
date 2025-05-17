@@ -13,10 +13,5 @@ export class AppComponent {
     private platform: Platform,
     private fcm: FcmService,
   ) {
-    platform.ready().then(() => {
-      fcm.initiPush();
-    }).catch(e => {
-      console.log(e);
-    });
   }
 }

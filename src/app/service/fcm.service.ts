@@ -19,7 +19,7 @@ export class FcmService {
 
   constructor(private storage: StorageService){ }
   
-  initiPush() {
+  init() {
     if(Capacitor.getPlatform() !== 'web') {
       this.registerPush();
     }
@@ -54,28 +54,8 @@ export class FcmService {
       'registration',
       async(token: Token) => {
         console.log('My token: ', token);
-        const fcm_token = (token?.value);
-        let go = 1;
-        const saved_token = JSON.parse((await this.storage.getStorage(FCM_TOKEN)).value);
-        if(saved_token) {
-          if(fcm_token == saved_token) {
-            console.log('same token');
-            go = 0;
-          } else {
-            go = 2;
-          }
-          if(go == 1) {
-            //save token
-            this.storage.setStorage(FCM_TOKEN, JSON.stringify(fcm_token));
-          } else if(go == 2) {
-            //update token
-            const data = {
-              expired_token: saved_token,
-              refreshed_token: fcm_token
-            };
-            this.storage.setStorage(FCM_TOKEN, fcm_token);
-          }
-        }
+        const last_token = await this.storage.getStorage('token');
+        await this.storage.setStorage('token', token.value);
       }
     )
     
@@ -103,10 +83,8 @@ export class FcmService {
 
   async removeFcmToken() {
     try {
-      const saved_token = JSON.parse((await this.storage.getStorage(FCM_TOKEN)).value);
-      this.storage.removeStorage(saved_token);
+      await this.storage.removeStorage("token");
     } catch (error) {
-      console.log(error);
       throw(error);
     }
   }

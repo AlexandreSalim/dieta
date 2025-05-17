@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">teste_com_payment</string>
-    <string name="title_activity_main">teste_com_payment</string>
+    <string name="app_name">Caloria de bolso</string>
+    <string name="title_activity_main">Caloria de bolso</string>
     <string name="package_name">com.caloriadebolso</string>
     <string name="custom_url_scheme">com.caloriadebolso</string>
 </resources>
