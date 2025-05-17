@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.caloriadebolso',
-  appName: 'Caloria de bolso',
+  appName: 'Calorias de bolso',
   webDir: 'www',
   plugins: {
     PushNotifications: {
