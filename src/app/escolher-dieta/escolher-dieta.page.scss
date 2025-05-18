@@ -32,7 +32,7 @@
      você pode sobrescrever aqui. Exemplo: */
   ion-button {
     --border-radius: 30px;
-    --background: #35a59f;
+    --background: var(--laranja);;
     text-transform: uppercase;
     font-weight: 600;
     height: 36px;

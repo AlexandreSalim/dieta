@@ -37,6 +37,8 @@
     "@capacitor/push-notifications": "^7.0.1",
     "@capacitor/status-bar": "7.0.1",
     "@ionic/angular": "^8.0.0",
+    "@maskito/angular": "^3.8.0",
+    "@maskito/core": "^3.8.0",
     "apexcharts": "^4.6.0",
     "cordova-plugin-apprate": "^1.8.0",
     "cordova-plugin-email-composer": "^0.10.1",

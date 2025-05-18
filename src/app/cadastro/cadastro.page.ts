@@ -20,6 +20,9 @@ import { AuthenticationService } from '../service/authentication.service';
 import { CreateUserRequest } from '../interfaces/createUser.interface';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
+import { MaskitoOptions, MaskitoElementPredicate, maskitoTransform } from '@maskito/core';
+import { MaskitoDirective } from '@maskito/angular';
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
@@ -34,10 +37,32 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     CommonModule,
     ReactiveFormsModule,
     NgxMaskDirective,
+    MaskitoDirective,
   ],
   providers: [provideNgxMask()]
 })
 export class CadastroPage implements OnInit {
+  readonly phoneMask: MaskitoOptions = {
+    mask: ['(', /\d/, /\d/, ')', ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  };
+
+  readonly cardMask: MaskitoOptions = {
+    mask: [
+      ...Array(4).fill(/\d/),
+      ' ',
+      ...Array(4).fill(/\d/),
+      ' ',
+      ...Array(4).fill(/\d/),
+      ' ',
+      ...Array(4).fill(/\d/),
+      ' ',
+      ...Array(3).fill(/\d/),
+    ],
+  };
+
+  readonly maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
+
+
   // 1) Usando nonNullable em cada controle:
   formulario = new FormGroup(
     {

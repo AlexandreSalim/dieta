@@ -7,7 +7,7 @@
     flex-direction: column;
     gap: 20px;
     z-index: 10;
-    background-color: white;
+    background: #FFF;
     font-family: "Montserrat", sans-serif !important;
 
     &__interno {
@@ -30,8 +30,8 @@
     }
 
     ion-button {
-        color: white;
-        --background: black;
+        color: black;
+        --background: var(--laranja);
         --border-radius: 20px;
         height: 40px;
         width: 250px;

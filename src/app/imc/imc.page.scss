@@ -105,8 +105,8 @@
     }
 
     ion-button {
-        color: white;
-        --background: black;
+        color: black;
+        --background: var(--laranja);
         --border-radius: 20px;
         height: 40px;
         width: 250px;

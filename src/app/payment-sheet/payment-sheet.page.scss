@@ -5,7 +5,7 @@ main {
   padding: 0px 0 40px 0;
   justify-content: center;
   align-items: center;
-  background-color: #b5b5b5;
+  background-color: white;
   font-family: "Montserrat", sans-serif !important;
 
   .body {
@@ -17,7 +17,7 @@ main {
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    background-color: white;
+    background-color: #e6e6e6;
 
     div h1 {
       font-weight: bold;
@@ -39,15 +39,15 @@ main {
         font-weight: 600;
 
         ion-checkbox {
-          --checkbox-background-checked: #41c7c8;
-          --border-color-checked: #41c7c8;
+          --checkbox-background-checked: var(--laranja);
+          --border-color-checked: var(--laranja);
           --checkmark-color: white;
         }
       }
     }
 
     &_plano {
-      background-color: #e6e6e6;
+      background-color: white;
       border-radius: 10px;
 
       .title {
@@ -79,16 +79,16 @@ main {
         h3 {
           position: absolute;
           left: 0px;
-          color: #34a59f;
+          color: var(--laranja);
         }
         h1 {
-          color: #34a59f;
+          color: var(--laranja);
           font-size: 40px;
         }
       }
 
       ion-button {
-        --background: #34a59f !important;
+        --background: var(--laranja) !important;
         --border-radius: 5px;
         text-transform: none;
         // font-weight: 600;

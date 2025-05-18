@@ -5,6 +5,7 @@ import { IonContent, IonInput, IonButton, IonIcon, IonNote } from '@ionic/angula
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
 import { AuthResponse, LoginRequest } from '../interfaces/login.interface';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -22,41 +23,60 @@ export class LoginPage implements OnInit {
   showError = false;
   errorMessage = '';
   isLoading = false;
+  user: any;
   
   constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+  
+onLogin() {
+  if (this.formulario.invalid) {
+    this.formulario.markAllAsTouched();
+    return;
+  }
+  
+  this.isLoading = true;
+  const payload: LoginRequest = this.formulario.getRawValue();
 
- onLogin() {
-   if (this.formulario.invalid) {
-     this.formulario.markAllAsTouched();
-     return;
-   }
+  this.authenticationService.login(payload)
+    .pipe(finalize(() => this.isLoading = false))
+    .subscribe({
+      next: () => {
+        // só aqui dentro, após o login ter sido aprovado,
+        // chamamos getUser() e navegamos a partir dele
+        this.authenticationService.getUser()
+          .subscribe({
+            next: user => {
+              this.user = user;
+              if (
+                user.age    == null ||
+                user.gender === 'Other' ||
+                user.goal   == null ||
+                user.height_cm == null ||
+                user.weight_kg == null
+              ) {
+                this.router.navigate(['/escolha']);
+              } else {
+                this.router.navigate(['/home']);
+              }
+            },
+            error: err => {
+              console.error('Erro ao buscar usuário:', err);
+              // opcional: tratamento ou fallback
+            }
+          });
+      },
+      error: err => {
+        this.showError = true;
+        this.errorMessage = err.status === 401
+          ? err?.error?.message ?? 'Credenciais inválidas.'
+          : err?.error?.message ?? 'Falha no login.';
+        console.error('Erro de login:', err);
+      }
+    });
+}
 
-   this.isLoading = true;
-   const payload: LoginRequest = this.formulario.getRawValue();
-   
-   this.authenticationService.login(payload)
-     .subscribe({
-       next: (response: AuthResponse) => {
-         // Token já armazenado no serviço via interceptor ou tap()
-         this.router.navigate(['/home']);
-       },
-       error: (err: any) => {
-         this.showError = true;
-
-        if (err.status === 401) {
-          this.errorMessage = err?.error?.message || 'Credenciais invalidas.'
-        } else {
-          this.errorMessage = err?.error?.message || 'Falha no login. Verifique suas credenciais.';
-        }
-         console.error('Erro de login:', err);
-       }
-     })
-     .add(() => {
-       this.isLoading = false;
-     });
- }
 
   cadastrar() {
     this.router.navigate(['/cadastro']);

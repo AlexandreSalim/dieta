@@ -45,7 +45,7 @@
           <ion-note>Celular invalido</ion-note>
         </div>
 
-          <input 
+          <!-- <input 
           mask="(00) 0 0000 0000" 
           fill="outline" 
           placeholder="Celular:" 
@@ -53,7 +53,18 @@
           type="text" 
           class="input-field" 
           formControlName="celular"
-          style="padding-left: 16px;">
+          style="padding-left: 16px;"> -->
+          <ion-input
+          fill="outline" 
+          id="Celular" 
+          type="text" 
+          class="input-field" 
+          formControlName="celular"
+          style="padding-left: 16px;"
+          placeholder="(xx) x xxx-xxxx"
+          [maskito]="phoneMask"
+          [maskitoElement]="maskPredicate"
+          ></ion-input>
 
         <div class="termos">
           <label class="custom-checkbox">

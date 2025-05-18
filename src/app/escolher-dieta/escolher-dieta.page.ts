@@ -96,7 +96,10 @@ export class EscolherDietaPage implements OnInit {
     const selected = this.dietOptions[this.currentIndex];
     this.userStateService.setPartialData({ dieta: selected.id });
     this.authService.setDieta(selected.id).subscribe({
-      next: () => this.router.navigate(['/home']).then(() => window.location.reload()),
+      next: () => this.router.navigate(['/home']).then(() => {
+        window.location.reload();
+        this.userStateService.clearData();
+      }),
       error: err => console.error('Erro ao salvar dieta:', err)
     });
   }
