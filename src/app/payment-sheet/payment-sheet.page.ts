@@ -146,7 +146,10 @@ export class PaymentSheetPage {
   }
 
   async applePay() {
-    const isAvailable = Stripe.isApplePayAvailable().catch(() => undefined);
+    const isAvailable = Stripe.isApplePayAvailable().catch((msg) => {
+      console.log(msg);
+      return undefined;
+    });
     if (isAvailable === undefined) {
       return;
     }
@@ -181,7 +184,10 @@ export class PaymentSheetPage {
   }
 
   async googlepay() {
-    const isAvailable = Stripe.isGooglePayAvailable().catch(() => undefined);
+    const isAvailable = Stripe.isGooglePayAvailable().catch((msg) => {
+      console.log(msg);
+      return undefined;
+    });
     if (isAvailable === undefined) {
       return;
     }
