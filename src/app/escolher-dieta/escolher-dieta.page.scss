@@ -6,7 +6,7 @@
 
       h1, p {
         text-align: center;
-        color: #39b4b1; 
+        color: var(--azul-1); 
         font-weight: bold;
       }
 
@@ -17,7 +17,7 @@
           font-size: large;
         }
         p {
-          color: rgb(98, 98, 98);
+          color: var(--azul-1);
           font-size: medium;
           text-align: start;
         }
@@ -32,11 +32,11 @@
      você pode sobrescrever aqui. Exemplo: */
   ion-button {
     --border-radius: 30px;
-    --background: var(--laranja);;
+    --background: var(--laranja);
     text-transform: uppercase;
     font-weight: 600;
     height: 36px;
-    color: white;
+    color: var(--azul-1);
   }
   
   .swiper-container {
@@ -58,7 +58,7 @@
       box-sizing: border-box;
       opacity: 0.7;
       transform: scale(0.8);
-      color: black;
+      color: var(--azul-2);
   
       pre {
         white-space: pre-wrap;

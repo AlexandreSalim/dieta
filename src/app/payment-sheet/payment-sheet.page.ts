@@ -176,6 +176,7 @@ export class PaymentSheetPage {
     if (result.paymentResult === ApplePayEventsEnum.Completed) {
       //happy path
       this.aplitAndJoin(paymentIntent);
+      this.router.navigate(['/escolher-dieta']);
     }
   }
 
@@ -195,14 +196,14 @@ export class PaymentSheetPage {
     });
 
     const data$ = this.http
-      .post<{ paymentIntent: string, ephemeralKey: string, customer: string }>(
+      .post<{ paymentIntent: string }>(
         `${environment.api}/payment-sheet`,
         this.data,
         { headers }
       )
       .pipe(first());
 
-    const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
+    const { paymentIntent } = await lastValueFrom(data$);
 
     await Stripe.createGooglePay({
       paymentIntentClientSecret: paymentIntent,
@@ -221,6 +222,7 @@ export class PaymentSheetPage {
     if (result.paymentResult === GooglePayEventsEnum.Completed) {
       //happy path
       this.aplitAndJoin(paymentIntent);
+      this.router.navigate(['/escolher-dieta']);
     }
   }
 
@@ -228,9 +230,5 @@ export class PaymentSheetPage {
     const result = paymentIntent.split('_').slice(0, 2).join('_');
     console.log('paymentIntent');
     return result;
-  }
-
-  testederota() {
-    this.router.navigate(['/escolher-dieta']);
   }
 }

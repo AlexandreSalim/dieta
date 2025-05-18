@@ -113,9 +113,9 @@
         <a>Ativar lembrete</a>     
       </div>
       <div style="text-align: start;font-family: 'Montserrat', sans-serif">
-        <h2 style="color: var(--verde-claro);font-weight: bold;font-size: 20px;">{{ meal.meal_time.slice(0,5) }} - {{ meal.meal_name }}</h2>
+        <h2 style="color: var(--azuli-1);font-weight: bold;font-size: 20px;">{{ meal.meal_time.slice(0,5) }} - {{ meal.meal_name }}</h2>
         <div style="display: flex;align-items: center;justify-content: space-between;margin: 0 0 25px;">
-          <p style="width: 80%;font-size: 15px;margin: 0;">{{ meal.meal_nutrition }}</p>
+          <p style="width: 80%;font-size: 16px;margin: 0;">{{ meal.meal_nutrition }}</p>
           <label class="custom-checkbox">
             <input 
               name="dummy" 
@@ -151,6 +151,7 @@
       </div>
 
     </section>
+
     <ng-template #noMeal>
       <section 
         style="

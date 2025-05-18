@@ -8,7 +8,7 @@
     justify-content: end;
     img {
         position: relative;
-        bottom: 10px;
+        bottom: 90px;
     }
     & .litle-box {
         background: #FFF;
@@ -35,7 +35,7 @@
             flex-direction: column;
 
             ion-button {
-                color: black;
+                color: var(--azul-2);
                 --background: var(--laranja);
                 --border-radius: 20px;
                 --min-height: 28px;

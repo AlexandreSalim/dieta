@@ -12,7 +12,7 @@
   h1 {
     font-weight: bold;
     margin: 0 10px;
-    color: black;
+    color: var(--azul-1);
   }
 }
 
@@ -37,12 +37,12 @@
   justify-content: center;
   height: 40px;
   width: 31.1px;
-  background-color: #e6e6e6;
+  background-color: var(--azul-1);
   padding: 4px 0;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   font-weight: bold;
-  color: #000;
+  color: white;
   p {
     margin: 0;
   }
@@ -62,9 +62,13 @@
     margin: 0 0 0 0;
   }
 
+  .pSemana{color: var(--azul-1);}
+  .pDay{color: white;}
+
 }
 
 /* opcional: destaque para o highlightedIndex */
-.label-box.highlight {
-  color: #3ec9c9;
-}
+// .label-box.highlight {
+//   color: var(--laranja-2);
+//   background-color: var(--azul-1);
+// }

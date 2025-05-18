@@ -5,24 +5,32 @@
       <div class="refeicoes">
         <div *ngFor="let dieta of grupoDieta" class="refeicao">
           <div>
-            <h3 style="color: black;">{{ dieta.meal_name }}</h3>
-            <p style="color: black;" >{{ dieta.meal_nutrition }}</p>
+            <h3>{{ dieta.meal_name }}</h3>
+            <p>{{ dieta.meal_nutrition }}</p>
 
             <div class="chips">
               <ion-chip >
-                {{ dieta.calorie_content | number:'1.0-0' }}g 
+                <p>
+                  {{ dieta.calorie_content | number:'1.0-0' }}g 
+                </p>
                 <p>Caloria</p>
               </ion-chip>
               <ion-chip>
-                {{ dieta.carbohydrate_content | number:'1.0-0' }}g
+                <p>
+                  {{ dieta.carbohydrate_content | number:'1.0-0' }}g
+                </p>
                 <p>Carboidratos</p>
               </ion-chip>
               <ion-chip >
-                {{ dieta.protein_content | number:'1.0-0' }}g 
+                <p>
+                  {{ dieta.protein_content | number:'1.0-0' }}g 
+                </p>
                 <p>Proteínas</p>
               </ion-chip>
               <ion-chip >
-                {{ dieta.fat_content | number:'1.0-0' }}g
+                <p>
+                  {{ dieta.fat_content | number:'1.0-0' }}g
+                </p>
                 <p>Gordura</p>
               </ion-chip>
             </div>

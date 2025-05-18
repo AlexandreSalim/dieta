@@ -5,7 +5,13 @@
     --cinza-claro: #e6e6e6;
     --verde-escuro: #35a59f;
     --verde-claro: #3ec9c8;
-    --laranja: rgba(254, 187, 12, 1);
+    ///////////////////////////
+    --laranja: #F2B90F;
+    --laranja-2:#F2A20C;
+    --laranja-3: #F28907;
+    --laranja-4: #F27405;
+    --azul-1: #092B35;
+    --azul-2: #071E26;
 }
 /*
  * App Global CSS
@@ -242,9 +248,9 @@ ion-modal.modal-default.show-modal~ion-modal.modal-default {
 
   ion-toggle {
     --handle-background-checked: #ffffff;
-    --track-background-checked: #3ec9c8;
+    --track-background-checked: var(--azul-1);
     --track-background: white;
-    --handle-background: #3ec9c8;
+    --handle-background: var(--azul-1);
     --handle-width: 14px;
     --handle-height: 14px;
 }

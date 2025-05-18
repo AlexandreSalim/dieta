@@ -19,12 +19,12 @@
       class="label-box"
       [class.highlight]="i === highlightIndex"
     >
-      <p>{{ day }}</p>
+      <p class="pDay">{{ day }}</p>
     </div>
   </div>
   <div class="labels-row" style="bottom: 6px;">
     <div *ngFor="let semanas of sem" class="label-box label-sem">
-      <p>{{ semanas }}</p>
+      <p class="pSemana">{{ semanas }}</p>
     </div>
   </div>
 </div>

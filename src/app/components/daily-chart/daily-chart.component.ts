@@ -66,7 +66,7 @@ export class DailyChartComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     const colors = this.values.map((_, i) =>
-      i === this.highlightIndex ? '#e0e0e0' : '#3ec9c9'
+      i === this.highlightIndex ? '#e0e0e0' : 'var(--laranja)'
     );
 
     this.chartOptions = {
@@ -76,14 +76,14 @@ export class DailyChartComponent implements OnInit, OnChanges {
         text: this.title || 'Meu desempenho',
         align: 'left',
         margin: 20,
-        style: { fontSize: '18px', fontWeight: '600', color: '#333' }
+        style: { fontSize: '18px', fontWeight: '600', color: 'var(--azul-1)' }
       },
       subtitle: {
         offsetX: 0,
         offsetY: 13,
         text: 'último',
         align: 'right',
-        style: { fontSize: '14px', color: '#3ec9c9' }
+        style: { fontSize: '14px', color: 'var(--azul-1)' }
       },
       plotOptions: {
         bar: { distributed: false, columnWidth: '30px', borderRadius: 7, borderRadiusApplication: 'end', }
