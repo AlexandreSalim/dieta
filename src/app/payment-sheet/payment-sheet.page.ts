@@ -45,10 +45,10 @@ export class PaymentSheetPage {
 
    async pay() {
     if (this.platform.is('android')) {
-      await this.googlepay();
+      await this.paymentShet();
     } 
     else if (this.platform.is('ios')) {
-      await this.applePay();
+      await this.paymentShet();
     } 
     else {
       console.warn('Nenhum método de pagamento nativo disponível neste ambiente');
@@ -91,6 +91,9 @@ export class PaymentSheetPage {
         customerId: customer,
         customerEphemeralKeySecret: ephemeralKey,
         merchantDisplayName: 'Caloria de bolso',
+        enableApplePay: true,
+        enableGooglePay: true,
+        GooglePayIsTesting: true
       });
 
       // present PaymentSheet and get result.
@@ -98,6 +101,7 @@ export class PaymentSheetPage {
       if (result && result.paymentResult === PaymentSheetEventsEnum.Completed) {
         // Happy path
         this.aplitAndJoin(paymentIntent);
+        this.router.navigate(['/escolher-dieta']);
       }
     } catch (error) {
       console.log(error, 'payment-sheet');
