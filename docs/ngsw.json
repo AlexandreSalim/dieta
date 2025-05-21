@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1747846869751,
+  "timestamp": 1747847268582,
   "index": "/dieta/index.html",
   "assetGroups": [
     {
@@ -22,7 +22,7 @@
         "/dieta/2375.0cb1c7dfacbf6015.js",
         "/dieta/2415.c80abf2d6f35dbaf.js",
         "/dieta/2560.e5ff6377d3ba0d59.js",
-        "/dieta/2587.65c0cc8a7d8156ff.js",
+        "/dieta/2587.456df46bb19f0836.js",
         "/dieta/2834.91175c4dd0e31650.js",
         "/dieta/2885.f34de4d5fa3bea82.js",
         "/dieta/2924.ed70b35cec949e5c.js",
@@ -104,7 +104,7 @@
         "/dieta/polyfills-core-js.9b17e8c75eeccf74.js",
         "/dieta/polyfills-dom.bf542500b6fca113.js",
         "/dieta/polyfills.91aae63ddd436914.js",
-        "/dieta/runtime.4731635940dc54a6.js",
+        "/dieta/runtime.f8b6507d08d30d2d.js",
         "/dieta/styles.8c4efe8c13b7deb0.css"
       ],
       "patterns": []
@@ -1539,7 +1539,7 @@
     "/dieta/2375.0cb1c7dfacbf6015.js": "8f0a3185d4b9e1e23115928d1133f0a4293fcce4",
     "/dieta/2415.c80abf2d6f35dbaf.js": "3a757959934d7470cac102ff9d0cd19325042430",
     "/dieta/2560.e5ff6377d3ba0d59.js": "25bc85f62524649a0489426a752fca23da69890f",
-    "/dieta/2587.65c0cc8a7d8156ff.js": "8e6bec839dffebfcf4c9198d1995d08bf597c73c",
+    "/dieta/2587.456df46bb19f0836.js": "7e2604f54dc797b597d695f7389a56f4463caaf4",
     "/dieta/2834.91175c4dd0e31650.js": "6788b8a7fd81750916b6dff04eec1421083b73fc",
     "/dieta/2885.f34de4d5fa3bea82.js": "5526373f9d119b3621397a6533a3034fc6ca8ab4",
     "/dieta/2924.ed70b35cec949e5c.js": "07fe198dd9a149d1f7680a8711113411673389d6",
@@ -1665,12 +1665,12 @@
     "/dieta/assets/img/sem_fundo.png": "8b8429a47e1627bc637bed5dc6efa13f65ee1296",
     "/dieta/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "/dieta/common.b1558e0be2a2fed3.js": "df24b72039980eee44f33952de819543ee77190e",
-    "/dieta/index.html": "ced03d0c718096c6c43d547850ac98c9368f8d90",
+    "/dieta/index.html": "552070bf0aa33d25ccf4209ad6822e9431e50f69",
     "/dieta/main.28d88793e0db726b.js": "812655fee1a47faf19bcf8e4149100192473a332",
     "/dieta/polyfills-core-js.9b17e8c75eeccf74.js": "79c38229b37c1b018dc0427b03319da272d1c3bf",
     "/dieta/polyfills-dom.bf542500b6fca113.js": "3fa333db66c8050f12e99d977f5098a6de8dd593",
     "/dieta/polyfills.91aae63ddd436914.js": "678f1050e7bdbcd264c90768b4b104a523c523cf",
-    "/dieta/runtime.4731635940dc54a6.js": "c8e5254f769e300db1d9de941dceb777fd70c573",
+    "/dieta/runtime.f8b6507d08d30d2d.js": "d4ecd37a77e5be27899e2dd4543ccba812a12a05",
     "/dieta/styles.8c4efe8c13b7deb0.css": "d0e0b35cf8faaedde22f5ef2708e268096846b42",
     "/dieta/svg/accessibility-outline.svg": "92bc5fbc69bc5b55f75c5d29686d6f3b949857bd",
     "/dieta/svg/accessibility-sharp.svg": "0c6447c380f04b29bef7413d50d088dd4a5fd61c",
