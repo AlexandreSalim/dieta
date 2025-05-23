@@ -8,6 +8,9 @@ const STORAGE_KEY = 'tempUserData';
 })
 export class UserStateService {
   private tempUserData: Partial<UserState> = {};
+  
+  private readonly PAID_KEY = 'hasPaid';
+  private readonly DIET_KEY = 'hasSelectedDiet';
 
   constructor() {
     // Ao instanciar, tenta carregar do localStorage
@@ -37,4 +40,10 @@ export class UserStateService {
     this.tempUserData = {};
     localStorage.removeItem(STORAGE_KEY);
   }
+
+  setHasPaid(v: boolean) { localStorage.setItem(this.PAID_KEY, String(v)); }
+  getHasPaid(): boolean { return localStorage.getItem(this.PAID_KEY) === 'true'; }
+
+  setHasSelectedDiet(v: boolean) { localStorage.setItem(this.DIET_KEY, String(v)); }
+  getHasSelectedDiet(): boolean { return localStorage.getItem(this.DIET_KEY) === 'true'; }
 }

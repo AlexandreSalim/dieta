@@ -106,7 +106,7 @@
     </section>
 
     <!-- dieta -->
-    <section class="box" *ngIf="currentMeal as meal; else noMeal">
+    <section class="box" *ngIf="currentMeal as meal;">
       <div class="boxOne">
         <h2>Próxima refeição</h2>
         <a href="#">Ativar lembrete</a>     
@@ -151,7 +151,8 @@
 
     </section>
 
-    <ng-template #noMeal>
+    <!-- solicitar uma nova dieta -->
+    <!-- <ng-template #noMeal>
       <section 
         style="
         display: flex;
@@ -164,7 +165,7 @@
           <ion-button (click)="fazerCadastro()">Você não terminou seu cadastro, volte a termine!</ion-button>
         </div>
       </section>
-    </ng-template>
+    </ng-template> -->
 
     <!-- hidrico -->
     <section class="box" style="display: none;">
@@ -200,10 +201,6 @@
         <h1>meta batida</h1>
         <img src="../../assets/img/andar.gif">
       </div>
-    </section>
-    <!-- solicitar uma nova dieta -->
-    <section class="box" style="display: none;align-items: center;justify-content: center;">
-      <ion-button>solicitar uma nova dieta</ion-button>
     </section>
   </main>  
 
@@ -269,6 +266,7 @@
 
   <app-dieta *ngIf="dieta"></app-dieta>
   <app-perfil *ngIf="perfil"></app-perfil>
+
   <!-- grafico -->
   <section *ngIf="!home" style="margin-top: 35px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
     <app-daily-chart

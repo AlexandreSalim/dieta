@@ -143,6 +143,8 @@ export class ImcPage implements OnInit, ViewWillEnter {
       next: () => {
         console.log('✔️ tudo enviado com sucesso, indo para payment');
         // this.userStateService.clearData();
+        this.userStateService.setHasPaid(false);
+        this.userStateService.setHasSelectedDiet(false);
         this.router.navigate(['/payment-sheet'])
       },
 

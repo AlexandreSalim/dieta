@@ -100,6 +100,8 @@ export class PaymentSheetPage {
       const result = await Stripe.presentPaymentSheet();
       if (result && result.paymentResult === PaymentSheetEventsEnum.Completed) {
         // Happy path
+        this.userStateService.setHasPaid(true);
+        this.userStateService.setHasSelectedDiet(false);
         this.aplitAndJoin(paymentIntent);
         this.router.navigate(['/escolher-dieta']);
       }

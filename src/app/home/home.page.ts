@@ -59,7 +59,7 @@ export class HomePage {
   chartValues: number[] = []; // por enquanto você pode inicializar com zeros
   todayIndex = 6;
 
-  currentMeal1: Dieta | null = null;
+  // currentMeal1: Dieta | null = null;
   totalCalories = 0;
   selectedMeals = new Set<string>();
   days: string[] = [];
@@ -90,7 +90,7 @@ export class HomePage {
           this.iab.create(url, '_system');
         }
       });
-    }).catch((error) => console.log('error'))
+    }).catch((error) => console.log('error'));
   }
 
   ngOnInit(): void {

@@ -72,6 +72,7 @@ export class EscolherDietaPage implements OnInit {
 
   ngOnInit() {
     this.loadDietOptions();
+    
   }
 
   ngAfterViewInit() {
@@ -97,8 +98,12 @@ export class EscolherDietaPage implements OnInit {
     this.userStateService.setPartialData({ dieta: selected.id });
     this.authService.setDieta(selected.id).subscribe({
       next: () => this.router.navigate(['/home']).then(() => {
-        window.location.reload();
-        this.userStateService.clearData();
+      // marca que já escolheu dieta
+      this.userStateService.setHasSelectedDiet(true);
+      // opcional: limpa apenas o flag de pagamento
+      this.userStateService.setHasPaid(false);
+       // window.location.reload();
+      this.userStateService.clearData();
       }),
       error: err => console.error('Erro ao salvar dieta:', err)
     });
