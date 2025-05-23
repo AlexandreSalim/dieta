@@ -1,20 +1,21 @@
 <ion-content style="--background: var(--cinza-claro);">
   <ion-menu contentId="main-content">
     <ion-header>
-      <ion-toolbar color="ligth" style="border-style: none;">
+      <ion-toolbar style="border-style: none;--background: var(--white);">
         <section style="display: flex;align-items: center;justify-content: center;">
-          <!-- <div style="background-color: black;width: 130px;height: 30px;"></div> -->
-           <img src="../../assets/img/logo_certa.png" width="70px" height="70px">
+           <img src="assets/img/logo_icone_lado-removebg-preview.png" width="70px" height="70px">
         </section>
       </ion-toolbar>
     </ion-header>
-    <ion-content color="ligth" class="ion-padding">
+    <ion-content class="ion-padding" style="--background: var(--white);">
       <section class="menu" style="justify-content: space-between;">
         <div class="menu">
           <ion-icon name="moon-outline"></ion-icon>
           <p>Modo escuro</p>
         </div>
         <ion-toggle
+          [checked]="dark" 
+          (ionChange)="toggleDark($event)"
         ></ion-toggle>
       </section>
 
@@ -41,14 +42,12 @@
   </ion-menu>
 
   <header>
-    <div class="ion-page" id="main-content">
+    <div class="ion-page divHeader" id="main-content">
         <div style="--background: white;color: black;display: flex;justify-content: center;align-items: center;">
           <ion-buttons slot="start">
             <ion-menu-button style="font-size: 50px;"></ion-menu-button>
           </ion-buttons>
-          <!-- <div style="background-color: black;width: 130px;height: 30px;"></div>
-          <img src="../../assets/img/logo_certa.png" style="width: 70px;height: 70px;"> -->
-
+          <img src="assets/img/logo_icone_lado-removebg-preview.png" style="width: 70px;height: 70px;">
         </div>
     </div>
   </header>
@@ -109,29 +108,29 @@
     <!-- dieta -->
     <section class="box" *ngIf="currentMeal as meal; else noMeal">
       <div class="boxOne">
-        <h2>Dieta</h2>
-        <a>Ativar lembrete</a>     
+        <h2>Próxima refeição</h2>
+        <a href="#">Ativar lembrete</a>     
       </div>
       <div style="text-align: start;font-family: 'Montserrat', sans-serif">
-        <h2 style="color: var(--azuli-1);font-weight: bold;font-size: 20px;">{{ meal.meal_time.slice(0,5) }} - {{ meal.meal_name }}</h2>
-        <div style="display: flex;align-items: center;justify-content: space-between;margin: 0 0 25px;">
-          <p style="width: 80%;font-size: 16px;margin: 0;">{{ meal.meal_nutrition }}</p>
-          <label class="custom-checkbox">
-            <input 
-              name="dummy" 
-              type="checkbox" 
-              #checkbox 
-              [checked]="isChecked(meal.calorie_content)"
-              (change)="
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+        <h2 style="color: var(--laranja-4);font-weight: bold;font-size: 18px;margin: 10px 0 0 0;">{{ meal.meal_time.slice(0,5) }} - {{ meal.meal_name }}</h2>
+        <label class="custom-checkbox">
+          <input 
+          name="dummy" 
+          type="checkbox" 
+          #checkbox 
+          [checked]="isChecked(meal.calorie_content)"
+          (change)="
                 onToggleMeal(
                   checkbox.checked,
                   meal.calorie_content,
                   meal.calorie_content
                 )
-              ">
+                ">
             <span class="checkmark"></span>
           </label> 
         </div>
+        <p style="width: 80%;font-size: 16px;margin: 0 0 10px;">{{ meal.meal_nutrition }}</p>
           <section style="display: flex;align-items: center;justify-content: space-around;">
                 <div class="chips">
                   <ion-chip >
@@ -203,7 +202,7 @@
       </div>
     </section>
     <!-- solicitar uma nova dieta -->
-    <section class="box" style="display: flex;align-items: center;justify-content: center;">
+    <section class="box" style="display: none;align-items: center;justify-content: center;">
       <ion-button>solicitar uma nova dieta</ion-button>
     </section>
   </main>  

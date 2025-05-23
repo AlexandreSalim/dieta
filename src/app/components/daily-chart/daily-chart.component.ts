@@ -76,14 +76,14 @@ export class DailyChartComponent implements OnInit, OnChanges {
         text: this.title || 'Meu desempenho',
         align: 'left',
         margin: 20,
-        style: { fontSize: '18px', fontWeight: '600', color: 'var(--azul-1)' }
+        style: { fontSize: '18px', fontWeight: '600', color: 'var(--letra-white)' }
       },
       subtitle: {
         offsetX: 0,
         offsetY: 13,
         text: 'último',
         align: 'right',
-        style: { fontSize: '14px', color: 'var(--azul-1)' }
+        style: { fontSize: '14px', color: 'var(--letra-white)' }
       },
       plotOptions: {
         bar: { distributed: false, columnWidth: '30px', borderRadius: 7, borderRadiusApplication: 'end', }

@@ -3,17 +3,14 @@ header {
   align-items: center;
   justify-content: center;
   position: relative;
-  margin: 25px 0;
   font-family: "Montserrat", sans-serif;
-
-  h1 {
-    margin: 0;
-    color: var(--azul-1);
+  height: 70px;
+  .divHeader {
   }
   
   ion-buttons {
     position: absolute;
-    left: 30px;
+    left: 16px;
   }
 }
 
@@ -24,25 +21,26 @@ main {
   gap: 18px;
   font-family: "Montserrat", sans-serif !important;
   margin-bottom: 90px;
+  padding: 0 24px;
 
   h1 {
     margin: 20px 0 0 0;
-    width: 80%;
+    width: 100%;
     text-align: start;
     font-weight: bold;
     color: var(--azul-2);
+    padding: 0 16px;
   }
 
   .box {
-    min-height: 200px;
-    width: 90%;
+    min-height: 165px;
+    width: 100%;
     border-radius: 25px;
-    background-color: #fff;
+    background-color: var(--box);
     position: relative;
     color: var(--azul-2);
     text-align: center;
-    padding: 20px;
-    box-shadow: 10px 10px 10px #d5c9c9;
+    padding: 16px;
     
     .boxOne {
       display: flex;
@@ -51,12 +49,13 @@ main {
       h2 {
         margin: 0;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 21px;
       }
 
       a {
         font-style: italic;
-
+        font-size: 12px;
+        display: none;
         color: var(--azul-1);
       }
       ion-icon {
@@ -206,7 +205,10 @@ ion-footer {
   display: flex;
   align-items: center;
   gap: 15px;
-  color: var(--azul-1);
+  color: var(--azul-1); 
+  p, ion-icon {
+    color: var(--letra-white);
+  }
 }
 
 .chips {
@@ -220,11 +222,16 @@ ion-footer {
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
     p {
       margin: 0;
     }
     &:nth-child(1) {
       background-color: #c14848;
+      margin: 4px 4px 4px -1px;
     }
     &:nth-child(2) {
       background-color: #764fa5;
@@ -263,7 +270,7 @@ ion-footer {
   .custom-checkbox .checkmark {
     width: 34px;
     height: 34px;
-    border: 2px solid var(--azul-1);
+    border: 2px solid var(--letra-white);
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -281,21 +288,21 @@ ion-footer {
   }
   
   .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-    background-color: var(--azul-1);
+    background-color: var(--letra-white);
     border-color: var(--azul-1);
     transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
   }
   
   .custom-checkbox input[type="checkbox"]:checked + .checkmark::before {
-    color: #fff;
+    color: var(--background);
   }
   
   .custom-checkbox:hover {
-    color: var(--azul-1);
+    color: var(--letra-white);
   }
   
   .custom-checkbox:hover .checkmark {
-    border-color: var(--azul-1);
+    border-color: var(--letra-white);
     background-color: #f0f0f0;
     transform: scale(1.05);
   }

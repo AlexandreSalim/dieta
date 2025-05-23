@@ -1,10 +1,11 @@
-<div class="tela">
+<section style="padding: 0 24px;">
+  <div>
 
-    <section>
+    <section class="tela">
       <!-- <h1 style="color: black;margin: 0;">1 dieta por mês 30 reais</h1> -->
       <div class="refeicoes">
         <div *ngFor="let dieta of grupoDieta" class="refeicao">
-          <div>
+          <div class="cadaRefeicao">
             <h3>{{ dieta.meal_name }}</h3>
             <p>{{ dieta.meal_nutrition }}</p>
 
@@ -13,25 +14,25 @@
                 <p>
                   {{ dieta.calorie_content | number:'1.0-0' }}g 
                 </p>
-                <p>Caloria</p>
+                <!-- <p>Caloria</p> -->
               </ion-chip>
               <ion-chip>
                 <p>
                   {{ dieta.carbohydrate_content | number:'1.0-0' }}g
                 </p>
-                <p>Carboidratos</p>
+                <!-- <p>Carboidratos</p> -->
               </ion-chip>
               <ion-chip >
                 <p>
                   {{ dieta.protein_content | number:'1.0-0' }}g 
                 </p>
-                <p>Proteínas</p>
+                <!-- <p>Proteínas</p> -->
               </ion-chip>
               <ion-chip >
                 <p>
                   {{ dieta.fat_content | number:'1.0-0' }}g
                 </p>
-                <p>Gordura</p>
+                <!-- <p>Gordura</p> -->
               </ion-chip>
             </div>
           </div>
@@ -59,4 +60,5 @@
     </ion-card>
   </section> -->
     
-  </div>
+</div>
+</section>

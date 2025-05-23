@@ -8,12 +8,13 @@
     font-style: italic;
     text-align: center;"
     >Escolha sua dieta</ion-title> -->
+    <section style="display: flex;justify-content: center;height: 100%;align-items: center;margin: 0 8px;">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" *ngFor="let option of dietOptions; let i = index">
             <ion-card-content>
               <section style="align-items: center;justify-content: center;display: flex;">
-                <h1 style="padding: 13px;width: 150px;border-radius: 30px;background-color: var(--laranja);color: var(--azul-1);">Opção {{ i + 1 }}</h1>
+                <h1 style="padding: 13px;width: 150px;border-radius: 30px;background-color: var(--laranja-2);color: var(--azul-2);font-weight: 600;font-size: large;">Opção {{ i + 1 }}</h1>
               </section>
                 
               <p>{{ option.total_calorie_content }} kcal/dia</p>
@@ -21,11 +22,13 @@
                 <strong>{{ item.meal_name }}:</strong>
                 <p>{{ item.meal_nutrition }}</p>
               </div>
-              <ion-button expand="block" (click)="selectOption()">Selecionar</ion-button>
+              <button expand="block" (click)="selectOption()">Selecionar</button>
+
             </ion-card-content>
         </div>
       </div>
     </div>
+    </section>
   </ng-container>
 
   <ng-template #loading>

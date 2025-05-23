@@ -13,8 +13,7 @@
 
     &__internal {
         height: 400px;
-        width: 350px;
-        padding: 10px;
+        width: 340px;
 
         .selected {
             transform: scale(1.07);
@@ -32,6 +31,7 @@
             ion-img {
                 width: 30%;
                 height: 83px;
+                filter: saturate(250%) hue-rotate(241deg);
             }
 
             .ion-input {

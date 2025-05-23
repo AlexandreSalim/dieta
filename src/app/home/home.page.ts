@@ -38,6 +38,7 @@ export class HomePage {
   home = true;
   daily = false;
   perfil = false;
+  dark = false;
 
   // array de lembretes: cada um com hora e dias
   reminders: Reminder[] = [];
@@ -93,6 +94,8 @@ export class HomePage {
   }
 
   ngOnInit(): void {
+    this.dark = localStorage.getItem('darkMode') === 'true';
+    this.setClass(this.dark);
     this.totalCalories = parseFloat(localStorage.getItem('totalCalories') || '0');
     const sel = JSON.parse(localStorage.getItem('selectedMeals') || '{}') as Record<string, true>;
     this.selectedMeals = new Set(Object.keys(sel));
@@ -373,5 +376,15 @@ export class HomePage {
     // Destaca hoje (o último índice)
     this.highlightIndex = this.values.length - 1;
     this.daily = true;
+  }
+   toggleDark(event: any) {
+    this.dark = event.detail.checked;
+    localStorage.setItem('darkMode', this.dark.toString());
+    this.setClass(this.dark);
+  }
+
+  private setClass(isDark: boolean) {
+    const htmlEl = document.documentElement;
+    htmlEl.classList[ isDark ? 'add' : 'remove' ]('ion-palette-dark');
   }
 }

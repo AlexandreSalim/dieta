@@ -6,13 +6,13 @@
   position: relative;
   padding: 20px 0 50px 0; /* espaço para as labels */
   border-radius: 30px;
-  background-color: white;
+  background-color: var(--box);
   margin-bottom: 40px;
   
   h1 {
     font-weight: bold;
     margin: 0 10px;
-    color: var(--azul-1);
+    color: var(--letra-white);
   }
 }
 
@@ -37,7 +37,7 @@
   justify-content: center;
   height: 40px;
   width: 31.1px;
-  background-color: var(--azul-1);
+  background-color: var(--div-azul-1);
   padding: 4px 0;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -63,7 +63,7 @@
   }
 
   .pSemana{color: var(--azul-1);}
-  .pDay{color: white;}
+  .pDay{color: var(--box);}
 
 }
 

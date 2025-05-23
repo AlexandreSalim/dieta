@@ -1,174 +1,178 @@
 .tela {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 10px;
-    margin-bottom: 80px;
-    font-family: "Montserrat", sans-serif !important;
-    background-color: white;
-    border-radius: 20px;
-  }
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  margin-bottom: 80px;
+  font-family: "Montserrat", sans-serif !important;
+  background-color: var(--box);
+  border-radius: 10px;
+  width: 100%;
+  padding: 0 16px;
+}
 
-  .refeicoes {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.refeicoes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-    .refeicao {
-      border-bottom: 1px solid #bdbaba;
-      padding: 0 15px 20px;
+  .refeicao {
+    border-bottom: 1px solid #bdbaba;
+    padding: 0 0 20px;
+    color: var(--letra-white);
+
+    .cadaRefeicao {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: start;
+      text-align: start;
+    }
+
+    h3 {
+      font-weight: bold;
+      margin-bottom: 0;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 3px;
       justify-content: center;
-      gap: 25px;
-      text-align: center;
-      width: 86%;
-      margin-left: 29px;
-      color: var(--azul-1);
+      width: 100%;
 
-      h3 {
-        font-weight: bold;
-      }
-
-      p {
-        margin: 0 0 10px;
-        font-size: large;
-        font-weight: bold;
-      }
-
-      .chips {
+      ion-chip {
+        color: white;
+        text-align: center;
         display: flex;
-        gap: 3px;
+        justify-content: center;
+        gap: 2px;
+        align-items: center;
+        font-size: 12px;
+        margin: 0;
+        min-height: 17px;
+        padding: 0;
+        width: 25%;
 
-        ion-chip {
+        p {
           color: white;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          gap: 2px;
-          width: 80px;
-          align-items: center;
-          font-size: 11px;
           margin: 0;
-          min-height: 25px;
-          padding: 0;
-
-          p {
-            color: white;
-            margin: 0;
-            font-size: 10px;
-          }
-          &:nth-child(1) {
-            background-color: #F57C00;
-          }
-          &:nth-child(2) {
-            background-color: #764fa5;
-            width: 100px;
-          }
-          &:nth-child(3) {
-            background-color: #c14848;
-          }
-          &:nth-child(4) {
-            background-color: #4c9e7c;
-          }
+          font-size: 10px;
+        }
+        &:nth-child(1) {
+          background-color: #f57c00;
+        }
+        &:nth-child(2) {
+          background-color: #764fa5;
+        }
+        &:nth-child(3) {
+          background-color: #c14848;
+        }
+        &:nth-child(4) {
+          background-color: #4c9e7c;
         }
       }
     }
-    
-    .refeicao:nth-child(6) {
-      border-bottom: none;
-    }
   }
-  
-  // Container que centraliza o cartão
-  .plano-alimentar-container {
+
+  .refeicao:nth-child(6) {
+    border-bottom: none;
+  }
+}
+
+// Container que centraliza o cartão
+.plano-alimentar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  gap: 20px;
+}
+
+// Card principal do plano alimentar
+.plano-alimentar-card {
+  background: transparent; /* Fundo escuro */
+  border-radius: 15px;
+  color: #fff;
+  box-shadow: none;
+
+  ion-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 500px; 
-    gap: 20px; 
-  }
-  
-  // Card principal do plano alimentar
-  .plano-alimentar-card {
-    background: transparent; /* Fundo escuro */
-    border-radius: 15px;
-    color: #fff; 
-    box-shadow: none;  
-  
-    ion-card-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     //   padding: 20px;
-      gap: 6px;
-    }
+    gap: 6px;
   }
-  
-  /* Caso queira estilizar mais o botão de Voltar ou remover margin do ion-card,
+}
+
+/* Caso queira estilizar mais o botão de Voltar ou remover margin do ion-card,
      você pode sobrescrever aqui. Exemplo: */
-  ion-button {
-    --border-radius: 30px;
-    --background: #35a59f;
-    text-transform: uppercase;
-    font-weight: 600;
+ion-button {
+  --border-radius: 30px;
+  --background: #35a59f;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.swiper-container {
+  width: 100%;
+  padding: 16px 0 0 0;
+  overflow: visible !important;
+
+  .swiper-wrapper {
+    transition-timing-function: linear; /* Para movimento mais suave */
   }
-  
-  .swiper-container {
-    width: 100%;
-    padding: 16px 0 0 0;
-    overflow: visible !important;
-  
-    .swiper-wrapper {
-      transition-timing-function: linear; /* Para movimento mais suave */
+
+  .swiper-slide {
+    width: 332px;
+    height: 460px;
+    background: #ffffff;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0.7;
+    transform: scale(0.8);
+    color: black;
+
+    pre {
+      white-space: pre-wrap;
+      text-align: left;
+      margin-top: 15px;
+      color: #fff;
     }
-  
-    .swiper-slide {
-      width: 332px;
-      height: 460px;
-      background: #ffffff;
-      border-radius: 15px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      box-sizing: border-box;
-      opacity: 0.7;
-      transform: scale(0.8);
-      color: black;
-  
-      pre {
-        white-space: pre-wrap;
-        text-align: left;
-        margin-top: 15px;
-        color: #fff;
-      }
-  
-      &-active {
-        transform: scale(1) !important;
-        opacity: 1 !important;
-        z-index: 3;
-      }
-  
-      &-prev {
-        transform: translateX(40%) scale(0.85) !important;
-        opacity: 0.8;
-        z-index: 1;
-        background: #b3b3b3;
-        opacity: 0.1;
-      }
-  
-      &-next {
-        transform: translateX(-40%) scale(0.85) !important;
-        opacity: 0.8;
-        z-index: 1;
-        background: #b3b3b3;
-        opacity: 0.1;
-      }
+
+    &-active {
+      transform: scale(1) !important;
+      opacity: 1 !important;
+      z-index: 3;
+    }
+
+    &-prev {
+      transform: translateX(40%) scale(0.85) !important;
+      opacity: 0.8;
+      z-index: 1;
+      background: #b3b3b3;
+      opacity: 0.1;
+    }
+
+    &-next {
+      transform: translateX(-40%) scale(0.85) !important;
+      opacity: 0.8;
+      z-index: 1;
+      background: #b3b3b3;
+      opacity: 0.1;
     }
   }
+}

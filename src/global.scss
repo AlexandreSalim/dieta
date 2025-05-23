@@ -1,18 +1,4 @@
-:root {
-    --black: #1a1a1a;
-    --cinza-escuro: #4d4d4d;
-    --cinza-medio: #b3b3b3;
-    --cinza-claro: #e6e6e6;
-    --verde-escuro: #35a59f;
-    --verde-claro: #3ec9c8;
-    ///////////////////////////
-    --laranja: #F2B90F;
-    --laranja-2:#F2A20C;
-    --laranja-3: #F28907;
-    --laranja-4: #F27405;
-    --azul-1: #092B35;
-    --azul-2: #071E26;
-}
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -47,9 +33,9 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* Importando a fonte Montserrat do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');

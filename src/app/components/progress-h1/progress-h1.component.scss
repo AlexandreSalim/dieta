@@ -6,8 +6,8 @@
     margin-top: 30px;
 
     &_bar {
-        --progress-background: var(--azul-1); 
-        --background: var(--laranja);
+        --progress-background: var(--laranja); 
+        --background: var(--azul-1);
         border-radius: 30px;
     }
 }
@@ -16,7 +16,7 @@
 h1 {
     font-weight: bolder;
     color: var(--azul-1);
-    font-size: 30px;
+    font-size: 26px;
     font-family: "Montserrat", sans-serif;
     text-align: center;
 }
